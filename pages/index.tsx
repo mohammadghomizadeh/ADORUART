@@ -4,7 +4,6 @@ import HomeLayout from "@/components/layouts/Home";
 import HomeStyle from "@/styles/pages/Home.module.scss";
 import {SliderShow} from "@/components/home/slider";
  const Home = ({ data,menus }:any) =>  {
-     console.log(menus)
      const truncate = (str:any, max:any, suffix:any) => str.length < max ? str : `${str.substr(0, str.substr(0, max - suffix.length).lastIndexOf(' '))}${suffix}`;
      return (
         <HomeLayout title={"Home"} menus={menus}>
@@ -518,18 +517,18 @@ import {SliderShow} from "@/components/home/slider";
   )
 }
 
-export  const getServerSideProps = async()=> {
-    // Fetch data from external API
-    const res = await fetch(`http://127.0.0.1:8000/api/home`)
-    const resMenus = await fetch(`http://127.0.0.1:8000/api/menus`)
-    const menus = await resMenus.json()
-    const data = await res.json()
-    // Pass data to the page via props
-    return { props: {
-        'data' :data,
-        'menus' :menus,
-        } }
-}
+// export  const getServerSideProps = async()=> {
+//     // Fetch data from external API
+//     const res = await fetch(`http://127.0.0.1:8000/api/home`)
+//     const resMenus = await fetch(`http://127.0.0.1:8000/api/menus`)
+//     const menus = await resMenus.json()
+//     const data = await res.json()
+//     // Pass data to the page via props
+//     return { props: {
+//         'data' :data,
+//         'menus' :menus,
+//         } }
+// }
 
 export default Home;
 

@@ -6,7 +6,6 @@ type Props = {
 };
 export const SliderShow = (props: Props) => {
     const {data} = props;
-    console.log(data)
     const settings = {
         dots: false,
         infinite: true,
