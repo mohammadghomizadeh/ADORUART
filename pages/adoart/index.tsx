@@ -5,7 +5,7 @@ function Adoruart()  {
 
     return (
         <>
-            <HomeLayout title={"Home"}>
+            <HomeLayout title={"Home"} >
                 <section className={"bg-primary px-20 flex pb-20 justify-center flex- flex-col items-center justify-center"}>
                     <div className={"mt-12 text-56"}>
                         <h1>ABOUT ADORUART</h1>

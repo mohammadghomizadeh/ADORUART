@@ -2,9 +2,9 @@ import React, {ReactNode} from "react";
 import Head from "next/head";
 import dynamic from 'next/dynamic';
 interface Props {
-    children: ReactNode;
-    menus: any;
-    title: string;
+    children?: ReactNode;
+    menus?: any;
+    title?: string;
 }
 export default function HomeLayout( props: Props ) {
     const DynamicHeader = dynamic(() => import('./partials/Header'), { ssr: false });
