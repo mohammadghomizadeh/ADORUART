@@ -1,13 +1,9 @@
-// @flow 
 import * as React from 'react';
-
-type Props = {
-    
-};
-export const ArtWork = (props: Props) => {
+ const ArtWork = () => {
     return (
         <div>
-
+<h1>Artowork</h1>
         </div>
     );
 };
+export default ArtWork;
