@@ -1,47 +1,47 @@
-.head{
-  @apply bg-primary px-20 flex pb-20 justify-center pt-10;
-  h1{
-    @apply text-56;
-  }
-  h2{
-    @apply text-40;
-  }
-  button{
-    @apply bg-secondary text-lg py-5 px-20 rounded-sm mt-20;
-  }
-}
+//.head{
+//  @apply ;
+//  h1{
+//    @apply ;
+//  }
+//  h2{
+//    @apply  ;
+//  }
+//  button{
+//    @apply ;
+//  }
+//}
 .slider{
-  @apply rounded-lg relative ;
+  @apply rounded-lg relative my-10 lg:my-0 ;
   border:1px solid white;
-  width:509px;
   height: 381px;
+  @screen lg{
+    width:509px;
+    height: 381px;
+  }
   img{
     width:509px;
     height: 430px;
   }
 }
 .sliderItem{
-  @apply rounded-lg absolute -top-2 right-8 overflow-hidden;
-  width:509px;
-  height: 420px;
+  @apply rounded-lg relative mt-4  overflow-hidden;
+  height: 350px;
+  @screen lg{
+
+    @apply absolute -top-2 right-8 mt-0;
+    width:509px;
+    height: 420px;
+  }
 }
 .discover{
-  @apply bg-gold flex justify-center flex-col items-center;
+  @apply bg-gold flex justify-center flex-col items-center w-full;
   h3{
-    @apply  pt-24 text-title text-4xl;
+    @apply  pt-24 text-title text-4xl px-20;
     font-style: normal;
     font-weight: 800;
   }
   h4{
-    @apply flex justify-center pt-6 text-title text-2xl;
-  }
-  & > div{
-    @apply flex px-20 gap-6;
-    padding:70px 80px;
-    img{
-      width:424px;
-      height: 316px;
-    }
+    @apply flex justify-center pt-6 text-title text-2xl px-20;
   }
    button{
     @apply bg-secondary text-lg py-5 px-20 rounded-sm ;
@@ -74,16 +74,16 @@
   }
 
 }
-.artworkgallery{
-  @apply flex justify-center items-center px-20 gap-6 mt-20;
-  & > div{
-    @apply flex flex-col;
-  }
-  img{
-    height:316px;
-  }
-
-}
+//.artworkgallery{
+//  @apply flex justify-center items-center px-20 gap-6 mt-20;
+//  & > div{
+//    @apply flex flex-col;
+//  }
+//  img{
+//    height:316px;
+//  }
+//
+//}
 .nft{
   @apply flex flex-col justify-center items-center bg-nftHome py-32;
   button{
@@ -138,9 +138,9 @@
 }
 
 
-.browse{
-  @apply flex flex-col justify-center items-center bg-brows py-32 px-20;
-}
+//.browse{
+//  @apply ;
+//}
 .browsetitle{
   @apply flex justify-center items-center pt-2 gap-6;
   hr{

@@ -11,44 +11,49 @@ export const MenuArtwork = (props: Props) => {
             <nav className={"absolute flex top-20  z-50 " + customeClass}>
                 <div className={"bg-menubg py-10 px-8"}>
                     <div className={"pb-4"}>
-                                 <span className={"text-gold font-bold border-b border-gold"}>
+
+                        <Link href={"/Painting"}>
+                            <a>
+                                <span className={"text-gold font-bold border-b border-gold"}>
                                  Painting
                                 </span>
+                            </a>
+                        </Link>
                     </div>
                     <div>
                         <ul className={"flex flex-col gap-2 text-title font-semibold"}>
                             <li>
-                                <Link href={""}>
+                                <Link href={"/Sculpture"}>
                                     <a>Sculpture</a>
                                 </Link>
                             </li>
                             <li>
-                                <Link href={""}>
+                                <Link href={"/Photography"}>
                                     <a>Photography</a>
                                 </Link>
                             </li>
                             <li>
-                                <Link href={""}>
+                                <Link href={"/Drawing"}>
                                     <a>Drawing</a>
                                 </Link>
                             </li>
                             <li>
-                                <Link href={""}>
+                                <Link href={"/Work"}>
                                     <a>Work on paper</a>
                                 </Link>
                             </li>
                             <li>
-                                <Link href={""}>
+                                <Link href={"/media"}>
                                     <a>Other media</a>
                                 </Link>
                             </li>
                             <li>
-                                <Link href={""}>
+                                <Link href={"/latest"}>
                                     <a>Our latest works</a>
                                 </Link>
                             </li>
                             <li>
-                                <Link href={""}>
+                                <Link href={"/Explore"}>
                                     <a>Explore more</a>
                                 </Link>
                             </li>
@@ -64,37 +69,37 @@ export const MenuArtwork = (props: Props) => {
                     <div>
                         <ul className={"flex flex-col gap-2 text-title font-semibold"}>
                             <li>
-                                <Link href={""}>
+                                <Link href={"/Everyday-Life"}>
                                     <a>Everyday Life</a>
                                 </Link>
                             </li>
                             <li>
-                                <Link href={""}>
+                                <Link href={"/Landscape"}>
                                     <a>Landscape</a>
                                 </Link>
                             </li>
                             <li>
-                                <Link href={""}>
+                                <Link href={"/Nude"}>
                                     <a>Nude</a>
                                 </Link>
                             </li>
                             <li>
-                                <Link href={""}>
+                                <Link href={"/Portrait"}>
                                     <a>Portrait</a>
                                 </Link>
                             </li>
                             <li>
-                                <Link href={""}>
+                                <Link href={"/Still-Life"}>
                                     <a>Still Life</a>
                                 </Link>
                             </li>
                             <li>
-                                <Link href={""}>
+                                <Link href={"/Street-Art"}>
                                     <a>Street Art</a>
                                 </Link>
                             </li>
                             <li>
-                                <Link href={""}>
+                                <Link href={"/see-more"}>
                                     <a>See more</a>
                                 </Link>
                             </li>
@@ -110,37 +115,37 @@ export const MenuArtwork = (props: Props) => {
                     <div>
                         <ul className={"flex flex-col gap-2 text-title font-semibold"}>
                             <li>
-                                <Link href={""}>
+                                <Link href={"/Abstract"}>
                                     <a>Abstract</a>
                                 </Link>
                             </li>
                             <li>
-                                <Link href={""}>
+                                <Link href={"/Fantasy"}>
                                     <a>Fantasy</a>
                                 </Link>
                             </li>
                             <li>
-                                <Link href={""}>
+                                <Link href={"/Figurative"}>
                                     <a>Figurative</a>
                                 </Link>
                             </li>
                             <li>
-                                <Link href={""}>
+                                <Link href={"/Fine-Art"}>
                                     <a>Fine Art</a>
                                 </Link>
                             </li>
                             <li>
-                                <Link href={""}>
+                                <Link href={"/Pop-Art"}>
                                     <a>Pop Art</a>
                                 </Link>
                             </li>
                             <li>
-                                <Link href={""}>
+                                <Link href={"/Semi-abstract"}>
                                     <a>Semi - abstract</a>
                                 </Link>
                             </li>
                             <li>
-                                <Link href={""}>
+                                <Link href={"/see-more"}>
                                     <a>See more</a>
                                 </Link>
                             </li>
@@ -159,7 +164,7 @@ export const MenuDesign = (props: Props) => {
         <nav className={"absolute flex   z-50 " + customeClass}>
             <div className={"bg-menubg py-10 px-8"}>
                 <div className={"pb-4"}>
-                    <Link href={""}>
+                    <Link href={"/Painting"}>
                         <a>
                             <span className={"text-gold font-bold border-b border-gold"}>
                                  Painting
@@ -171,37 +176,37 @@ export const MenuDesign = (props: Props) => {
                 <div>
                     <ul className={"flex flex-col gap-2 text-title font-semibold"}>
                         <li>
-                            <Link href={""}>
+                            <Link href={"/Sculpture"}>
                                 <a>Sculpture</a>
                             </Link>
                         </li>
                         <li>
-                            <Link href={""}>
+                            <Link href={"/Photography"}>
                                 <a>Photography</a>
                             </Link>
                         </li>
                         <li>
-                            <Link href={""}>
+                            <Link href={"/Drawing"}>
                                 <a>Drawing</a>
                             </Link>
                         </li>
                         <li>
-                            <Link href={""}>
+                            <Link href={"/paper"}>
                                 <a>Work on paper</a>
                             </Link>
                         </li>
                         <li>
-                            <Link href={""}>
+                            <Link href={"/media"}>
                                 <a>Other media</a>
                             </Link>
                         </li>
                         <li>
-                            <Link href={""}>
+                            <Link href={"/works"}>
                                 <a>Our latest works</a>
                             </Link>
                         </li>
                         <li>
-                            <Link href={""}>
+                            <Link href={"/Explore"}>
                                 <a>Explore more</a>
                             </Link>
                         </li>
@@ -217,37 +222,37 @@ export const MenuDesign = (props: Props) => {
                 <div>
                     <ul className={"flex flex-col gap-2 text-title font-semibold"}>
                         <li>
-                            <Link href={""}>
+                            <Link href={"/Life"}>
                                 <a>Everyday Life</a>
                             </Link>
                         </li>
                         <li>
-                            <Link href={""}>
+                            <Link href={"/Landscape"}>
                                 <a>Landscape</a>
                             </Link>
                         </li>
                         <li>
-                            <Link href={""}>
+                            <Link href={"/Nude"}>
                                 <a>Nude</a>
                             </Link>
                         </li>
                         <li>
-                            <Link href={""}>
+                            <Link href={"/Portrait"}>
                                 <a>Portrait</a>
                             </Link>
                         </li>
                         <li>
-                            <Link href={""}>
+                            <Link href={"/Still"}>
                                 <a>Still Life</a>
                             </Link>
                         </li>
                         <li>
-                            <Link href={""}>
+                            <Link href={"/Street"}>
                                 <a>Street Art</a>
                             </Link>
                         </li>
                         <li>
-                            <Link href={""}>
+                            <Link href={"/see-more"}>
                                 <a>See more</a>
                             </Link>
                         </li>
@@ -263,37 +268,37 @@ export const MenuDesign = (props: Props) => {
                 <div>
                     <ul className={"flex flex-col gap-2 text-title font-semibold"}>
                         <li>
-                            <Link href={""}>
+                            <Link href={"/Abstract"}>
                                 <a>Abstract</a>
                             </Link>
                         </li>
                         <li>
-                            <Link href={""}>
+                            <Link href={"/Fantasy"}>
                                 <a>Fantasy</a>
                             </Link>
                         </li>
                         <li>
-                            <Link href={""}>
+                            <Link href={"/Figurative"}>
                                 <a>Figurative</a>
                             </Link>
                         </li>
                         <li>
-                            <Link href={""}>
+                            <Link href={"/Fine"}>
                                 <a>Fine Art</a>
                             </Link>
                         </li>
                         <li>
-                            <Link href={""}>
+                            <Link href={"/Pop"}>
                                 <a>Pop Art</a>
                             </Link>
                         </li>
                         <li>
-                            <Link href={""}>
+                            <Link href={"/Semi"}>
                                 <a>Semi - abstract</a>
                             </Link>
                         </li>
                         <li>
-                            <Link href={""}>
+                            <Link href={"/see-more"}>
                                 <a>See more</a>
                             </Link>
                         </li>

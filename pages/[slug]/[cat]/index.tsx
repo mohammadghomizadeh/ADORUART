@@ -5,7 +5,7 @@ import HomeStyle from "@/styles/pages/Home.module.scss";
 import {ImEqualizer} from "react-icons/im"
 import {GrReturn} from "react-icons/gr"
 import {MdOutlineKeyboardArrowRight} from "react-icons/md"
-function Painting()  {
+function index()  {
 
     return (
         <HomeLayout title={"Home"}>
@@ -490,4 +490,4 @@ function Painting()  {
     )
 }
 
-export default Painting;
+export default index;

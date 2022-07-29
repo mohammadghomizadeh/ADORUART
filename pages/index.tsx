@@ -3,16 +3,18 @@ import Image from "next/image";
 import HomeLayout from "@/components/layouts/Home";
 import HomeStyle from "@/styles/pages/Home.module.scss";
 import {SliderShow} from "@/components/home/slider";
+import Link from "next/link";
  const Home = ({ data,menus }:any) =>  {
      const truncate = (str:any, max:any, suffix:any) => str.length < max ? str : `${str.substr(0, str.substr(0, max - suffix.length).lastIndexOf(' '))}${suffix}`;
      return (
         <HomeLayout title={"Home"} menus={menus}>
-            <section className={HomeStyle.head}>
-                <div className={"w-3/6 pt-10"}>
-                    <h1>ADORUART</h1>
-                    <h2 className={""}>selects talented artists from all
+
+            <section className={"bg-primary px-10  lg:px-20 lg:flex pb-20 justify-center pt-10"}>
+                <div className={"lg:w-3/6  pt-10"}>
+                    <h1 className={"text-56"}>ADORUART</h1>
+                    <h2 className={"text-40"}>selects talented artists from all
                         over the world, for you</h2>
-                    <button>APPLY NOW</button>
+                    <button className={"bg-secondary text-xl lg:text-lg lg:py-5 lg:px-20 py-5 px-32 rounded-sm mt-20"}>APPLY NOW</button>
                 </div>
                 <div>
                     <div className={HomeStyle.slider}>
@@ -22,109 +24,151 @@ import {SliderShow} from "@/components/home/slider";
                     </div>
                 </div>
             </section>
+
+
             <section className={HomeStyle.discover}>
                 <h3>Buy Original Art Online on our Art Gallery</h3>
                 <h4>A selection of Artworks and Paintings for Sale just for you</h4>
-                <div>
-                    <img src={"/images/slider1.png"} className={""} />
-                    <img src={"/images/slider1.png"} className={""} />
-                    <img src={"/images/slider1.png"} className={""} />
+                <div className={"w-full md:flex py-20 gap-y-5 md:gap-6 px-10 items-center justify-center"}>
+                    <img src={"/images/slider1.png"} className={"w-full md:w-1/4 my-4"} />
+                    <img src={"/images/slider1.png"} className={"w-full md:w-1/4 my-4"} />
+                    <img src={"/images/slider1.png"} className={"w-full md:w-1/4 my-4"} />
                 </div>
-                <div>
+                <div className={"py-10"}>
                     <button>DISCOVER OUR SELECTION</button>
                 </div>
             </section>
             <section className={HomeStyle.artwork}>
-                <div className={HomeStyle.artworktitle}>
-                    <hr/>
-                    <span>Find your next artwork to bring home</span>
-                    <hr/>
+                <div className={"flex justify-center items-center pt-2 gap-6 w-full px-6"}>
+                    <div className={"border-gold  border-b w-full hidden lg:block"}> </div>
+                    <div className={"text-title text-4xl  w-full text-center"}>Find your next artwork to bring home</div>
+                    <div className={"border-gold  border-b w-full hidden lg:block"}></div>
                 </div>
-                <section className={HomeStyle.artworkgallery}>
+                <section className={"w-full lg:flex  justify-center items-center px-20 gap-6 mt-20"}>
                     {/*<img src={"/images/artwork1.png"} alt=""/>*/}
-                    <div>
-                        <div className={HomeStyle.hoverParent}>
-                            <img src={"/images/artwork1.png"} alt=""/>
-                            <span className={HomeStyle.hoverChild}> Abstraction </span>
-                        </div>
-                        <div className={"flex justify-between items-center gap-4 mt-4"}>
-                            <div className={HomeStyle.hoverParent}><img src={"/images/artwork2.png"} alt=""/><span className={HomeStyle.hoverChild}> Pop Calture </span></div>
-                            <div className={HomeStyle.hoverParent}><img src={"/images/artwork3.png"} alt=""/><span className={HomeStyle.hoverChild}> Urban </span></div>
-                        </div>
+                    <div className={"lg:w-1/2"}>
+                        <Link href={"/Abstraction"}>
+                            <a>
+                                <div className={HomeStyle.hoverParent}>
+                                    <img src={"/images/artwork1.png"} alt=""/>
+                                    <span className={HomeStyle.hoverChild}> Abstraction </span>
+                                </div>
+                            </a>
+                        </Link>
+                        <Link href={"/Calture"}>
+                            <a>
+                                <div className={"lg:flex justify-between items-center gap-4 mt-4"}>
+                                    <div className={HomeStyle.hoverParent}><img src={"/images/artwork2.png"} alt=""/><span className={HomeStyle.hoverChild}> Pop Calture </span></div>
+                                    <div className={HomeStyle.hoverParent}><img src={"/images/artwork3.png"} alt=""/><span className={HomeStyle.hoverChild}> Urban </span></div>
+                                </div>
+                            </a>
+                        </Link>
                     </div>
-                    <div>
+                    <div className={"lg:w-1/2"}>
                         <div className={"flex justify-between items-center gap-4"}>
-                            <div className={HomeStyle.hoverParent}><img src={"/images/artwork4.png"} alt=""/><span className={HomeStyle.hoverChild}> Landscape </span></div>
-                            <div className={HomeStyle.hoverParent}><img src={"/images/artwork5.png"} alt=""/><span className={HomeStyle.hoverChild}> Street Art </span></div>
+                           <Link href={"/Landscape"}>
+                               <a>
+                                   <div className={HomeStyle.hoverParent}><img src={"/images/artwork4.png"} alt=""/><span className={HomeStyle.hoverChild}> Landscape </span></div>
+                               </a>
+                            </Link>
+                            <Link href={"/Street"}>
+                                <a>
+                                    <div className={HomeStyle.hoverParent}><img src={"/images/artwork5.png"} alt=""/><span className={HomeStyle.hoverChild}> Street Art </span></div>
+
+                                </a>
+                            </Link>
+
                         </div>
-                        <div className={ HomeStyle.hoverParent} style={{'marginTop':'15px'}}><img src={"/images/artwork6.png"} alt=""/><span className={HomeStyle.hoverChild}> Portrait </span></div>
+                        <Link href={"Portrait"}>
+                            <a>
+                                <div className={ HomeStyle.hoverParent} style={{'marginTop':'15px'}}><img src={"/images/artwork6.png"} alt=""/><span className={HomeStyle.hoverChild}> Portrait </span></div>
+
+                            </a>
+                        </Link>
                     </div>
                 </section>
                 <button>SEE MORE</button>
             </section>
             <section className={HomeStyle.nft}>
-                <div className={HomeStyle.nfttitle}>
-                    <hr/>
-                    <span>NFT artworks & paintings</span>
-                    <hr/>
+                <div className={"flex justify-center items-center pt-2 gap-6 w-full px-6"}>
+                    <div className={"border-gold  border-b w-full hidden lg:block"}> </div>
+                    <div className={"text-title text-4xl  w-full text-center"}>NFT artworks & paintings</div>
+                    <div className={"border-gold  border-b w-full hidden lg:block"}></div>
                 </div>
-                <span className={"text-title text-xl py-4  block justify-center  mx-56 text-center mt-8"}>
+                <span className={"text-title text-xl py-4  block justify-center  lg:mx-56 mx-10 text-center mt-8"}>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
                     labore et dolore magna aliqua
                 </span>
                 <div className={HomeStyle.nftgallery}>
-                    <div className={"flex justify-center items-center gap-6"}>
-                        <div>
-                            <div className={"border-2 border-black p-2 rounded"}>
-                                <img src={"/images/artwork1.png"} alt=""/>
-                            </div>
-                            <div className={"flex flex-col text-left mt-6 text-black"}>
-                                <span className={"text-gold text-lg"}>Artwork name</span>
-                                <span className={"text-sm"}>Artist name</span>
-                                <span className={"mt-4"}>Price: <b>1200$</b></span>
-                            </div>
-                        </div>
-                        <div>
-                            <div className={"border-2 border-black p-2 rounded"}>
-                                <img src={"/images/artwork2.png"} alt=""/>
-                            </div>
-                            <div className={"flex flex-col text-left mt-6 text-black"}>
-                                <span className={"text-gold text-lg"}>Artwork name</span>
-                                <span className={"text-sm"}>Artist name</span>
-                                <span className={"mt-4"}>Price: <b>1200$</b></span>
-                            </div>
-                        </div>
-                        <div>
-                            <div className={"border-2 border-black p-2 rounded"}>
-                                <img src={"/images/artwork5.png"} alt=""/>
-                            </div>
-                            <div className={"flex flex-col text-left mt-6 text-black"}>
-                                <span className={"text-gold text-lg"}>Artwork name</span>
-                                <span className={"text-sm"}>Artist name</span>
-                                <span className={"mt-4"}>Price: <b>1200$</b></span>
-                            </div>
-                        </div>
-                        <div>
-                            <div className={"border-2 border-black p-2 rounded"}>
-                                <img src={"/images/artwork4.png"} alt=""/>
-                            </div>
-                            <div className={"flex flex-col text-left mt-6 text-black"}>
-                                <span className={"text-gold text-lg font-bold"}>Artwork name</span>
-                                <span className={"text-sm"}>Artist name</span>
-                                <span className={"mt-4"}>Price: <b>1200$</b></span>
-                            </div>
-                        </div>
+                    <div className={"lg:flex justify-center items-center gap-6"}>
+                        <Link href={"/artwork/detail/Artwork-1"}>
+                            <a>
+                                <div>
+                                    <div className={"border-2 border-black p-2 rounded"}>
+                                        <img src={"/images/artwork1.png"} alt=""/>
+                                    </div>
+                                    <div className={"flex flex-col text-left mt-6 text-black"}>
+                                        <span className={"text-gold text-lg"}>Artwork name</span>
+                                        <span className={"text-sm"}>Artist name</span>
+                                        <span className={"mt-4"}>Price: <b>1200$</b></span>
+                                    </div>
+                                </div>
+                            </a>
+                        </Link>
+                        <Link href={"/artwork/detail/Artwork-2"}>
+                            <a>
+                                <div>
+                                    <div className={"border-2 border-black p-2 rounded"}>
+                                        <img src={"/images/artwork2.png"} alt=""/>
+                                    </div>
+                                    <div className={"flex flex-col text-left mt-6 text-black"}>
+                                        <span className={"text-gold text-lg"}>Artwork name</span>
+                                        <span className={"text-sm"}>Artist name</span>
+                                        <span className={"mt-4"}>Price: <b>1200$</b></span>
+                                    </div>
+                                </div>
+                            </a>
+                        </Link>
+                        <Link href={"/artwork/detail/Artwork-3"}>
+                            <a>
+                                <div>
+                                    <div className={"border-2 border-black p-2 rounded"}>
+                                        <img src={"/images/artwork3.png"} alt=""/>
+                                    </div>
+                                    <div className={"flex flex-col text-left mt-6 text-black"}>
+                                        <span className={"text-gold text-lg"}>Artwork name</span>
+                                        <span className={"text-sm"}>Artist name</span>
+                                        <span className={"mt-4"}>Price: <b>1200$</b></span>
+                                    </div>
+                                </div>
+                            </a>
+                        </Link>
+                        <Link href={"/artwork/detail/Artwork-4"}>
+                            <a>
+                                <div>
+                                    <div className={"border-2 border-black p-2 rounded"}>
+                                        <img src={"/images/artwork4.png"} alt=""/>
+                                    </div>
+                                    <div className={"flex flex-col text-left mt-6 text-black"}>
+                                        <span className={"text-gold text-lg"}>Artwork name</span>
+                                        <span className={"text-sm"}>Artist name</span>
+                                        <span className={"mt-4"}>Price: <b>1200$</b></span>
+                                    </div>
+                                </div>
+                            </a>
+                        </Link>
+
                     </div>
                 </div>
                 <button>SEE MORE</button>
             </section>
             <section className={HomeStyle.collections}>
-                <div className={HomeStyle.collectionstitle}>
-                    <hr/>
-                    <span>Our latest collections of original artworks & paintings</span>
-                    <hr/>
+                <div className={"flex justify-center items-center pt-2 gap-6 w-full px-6"}>
+                    <div className={"border-gold  border-b w-full hidden lg:block"}> </div>
+                    <div className={"text-title text-4xl  w-full text-center"}>Our latest collections of original artworks & paintings</div>
+                    <div className={"border-gold  border-b w-full hidden lg:block"}></div>
                 </div>
-                <section className={HomeStyle.collectionsgallery}>
+                <section className={"lg:flex gap-40 mt-24"}>
                     {/*<img src={"/images/artwork1.png"} alt=""/>*/}
                     <div className={"flex flex-col "}>
                         <div>
@@ -137,7 +181,7 @@ import {SliderShow} from "@/components/home/slider";
                                 <img src={"/images/cbig2.png"} width={199} alt=""/>
                             </div>
                         </div>
-                        <div className={"flex flex-col gap-y-2"}>
+                        <div className={"flex flex-col gap-y-2 py-10 lg:py-3"}>
                             <span className={"text-title"}>
                                 SINGULART'S SELECTION
                             </span>
@@ -160,7 +204,7 @@ import {SliderShow} from "@/components/home/slider";
                                 <img src={"/images/cbig2.png"} width={199} alt=""/>
                             </div>
                         </div>
-                        <div className={"flex flex-col gap-y-2"}>
+                        <div className={"flex flex-col gap-y-2 py-10 lg:py-3"}>
                             <span className={"text-title"}>
                                 SINGULART'S SELECTION
                             </span>
@@ -183,7 +227,7 @@ import {SliderShow} from "@/components/home/slider";
                                 <img src={"/images/cbig2.png"} width={199} alt=""/>
                             </div>
                         </div>
-                        <div className={"flex flex-col gap-y-2"}>
+                        <div className={"flex flex-col gap-y-2 py-10 lg:py-3"}>
                             <span className={"text-title"}>
                                 SINGULART'S SELECTION
                             </span>
@@ -197,15 +241,15 @@ import {SliderShow} from "@/components/home/slider";
                     </div>
                 </section>
             </section>
-            <section className={HomeStyle.browse}>
-                <div className={HomeStyle.browsetitle}>
-                    <hr/>
-                    <span>Browse by price</span>
-                    <hr/>
+            <section className={"flex flex-col justify-center items-center bg-brows w-full py-32 px-20"}>
+                <div className={"flex justify-center items-center pt-2 gap-6 w-full px-6"}>
+                    <div className={"border-gold  border-b w-full hidden lg:block"}> </div>
+                    <div className={"text-title text-4xl  w-full text-center"}>Browse by price</div>
+                    <div className={"border-gold  border-b w-full hidden lg:block"}></div>
                 </div>
-                <div className={"flex gap-6 mt-20"}>
-                    <div className={"flex gap-6 w-6/12"}>
-                        <div className={"flex flex-col items-center gap-y-6 text-title border-2 border-black  rounded w-6/12 p-17px"}>
+                <div className={"lg:flex  gap-6 mt-20"}>
+                    <div className={"flex lg:gap-6 gap-2 lg:w-6/12 "}>
+                        <div className={"flex flex-col items-center gap-y-6 text-title border-2 border-black  rounded w-6/12 p-2 lg:p-17px"}>
                             <img src={"/images/slider1.png"}   alt=""/>
                             <span>Up to</span>
                             <span className={"font-bold"}>1000 $</span>
@@ -213,7 +257,7 @@ import {SliderShow} from "@/components/home/slider";
                                 SEE NOW
                             </button>
                         </div>
-                        <div className={"flex flex-col items-center gap-y-6 text-title border-2 border-black  rounded w-6/12 p-17px"}>
+                        <div className={"flex flex-col items-center gap-y-6 text-title border-2 border-black  rounded w-6/12 p-2 lg:p-17px"}>
                             <img src={"/images/slider1.png"}   alt=""/>
                             <span>Up to</span>
                             <span className={"font-bold"}>1000 $</span>
@@ -222,8 +266,8 @@ import {SliderShow} from "@/components/home/slider";
                             </button>
                         </div>
                     </div>
-                    <div className={"flex flex-col gap-y-4 w-6/12"}>
-                        <div className={"flex  items-center gap-x-8 text-title border-2 border-black p-17px rounded "}>
+                    <div className={"flex flex-col gap-y-4 lg:w-6/12 mt-8 lg:mt-0"}>
+                        <div className={"flex  items-center lg:gap-x-8 gap-2 text-title border-2 border-black p-2 lg:p-17px rounded "}>
                             <img src={"/images/slider1.png"} className={"h-40 w-6/12"}  alt=""/>
                             <div className={"flex flex-col gap-y-5 w-6/12"}>
                                  <span>From <b>1000 $</b></span>
@@ -233,7 +277,7 @@ import {SliderShow} from "@/components/home/slider";
                                 </button>
                             </div>
                         </div>
-                        <div className={"flex  items-center gap-x-8 text-title border-2 border-black p-17px rounded"}>
+                        <div className={"flex  items-center lg:gap-x-8 gap-2 text-title border-2 border-black p-2 lg:p-17px rounded"}>
                             <img src={"/images/slider1.png"} className={"h-40 w-6/12"}  alt=""/>
                             <div className={"flex flex-col gap-y-5 w-6/12"}>
                                 <span>From <b>1000 $</b></span>
@@ -249,13 +293,13 @@ import {SliderShow} from "@/components/home/slider";
             </section>
             <section className={HomeStyle.sales}>
                 <div className={"flex justify-center items-center pt-2 gap-6 w-full px-6"}>
-                    <span className={"border-gold  border-b w-2/5"}/>
-                    <h1 className={"text-title text-4xl  w-1/5 text-center block"}>New sales</h1>
-                    <span className={"border-gold  border-b w-2/5"}/>
+                    <div className={"border-gold  border-b w-full hidden lg:block"}> </div>
+                    <div className={"text-title text-4xl  w-full text-center"}>New sales</div>
+                    <div className={"border-gold  border-b w-full hidden lg:block"}></div>
                 </div>
-                <section className={"flex gap-6 mt-10"}>
+                <section className={"lg:flex gap-6 mt-10"}>
                     {/*<img src={"/images/artwork1.png"} alt=""/>*/}
-                    <div className={"w-30%"}>
+                    <div className={"lg:w-30%"}>
                         <div>
                             <img src={"/images/sale1.png"} className={"w-full"}  alt=""/>
                         </div>
@@ -265,7 +309,7 @@ import {SliderShow} from "@/components/home/slider";
                             <span className={"text-title"}>03/2022 - Senegal</span>
                         </div>
                     </div>
-                    <div className={"w-3/6"}>
+                    <div className={"lg:w-3/6"}>
                         <div className={"flex flex-col"}>
                             <div className={""}>
                                 <div>
@@ -293,7 +337,7 @@ import {SliderShow} from "@/components/home/slider";
                             </div>
                         </div>
                     </div>
-                    <div className={"w-1/5"}>
+                    <div className={"lg:w-1/5"}>
                         <div>
                             <img src={"/images/sale4.png"}  alt=""/>
                         </div>
@@ -307,12 +351,12 @@ import {SliderShow} from "@/components/home/slider";
             </section>
             <section className={HomeStyle.callectors}>
                 <div className={"flex justify-center items-center pt-2 gap-6 w-full px-6"}>
-                    <span className={"border-gold  border-b w-2/5"}/>
-                    <h1 className={"text-title text-4xl  w-2/5 text-center block"}>The artists collectors</h1>
-                    <span className={"border-gold  border-b w-2/5"}/>
+                    <div className={"border-gold  border-b w-full hidden lg:block"}> </div>
+                    <div className={"text-title text-4xl  w-full text-center"}>The artists collectors</div>
+                    <div className={"border-gold  border-b w-full hidden lg:block"}></div>
                 </div>
-                <section className={"flex gap-6 mt-10"}>
-                    <div className={"border-gold border py-4 px-6 flex items-center gap-4"}>
+                <section className={"lg:flex gap-6 mt-10"}>
+                    <div className={"border-gold border py-4 px-6 flex items-center gap-4 my-2 lg:m-0"}>
                         <div>
                             <img src="/images/collectors.png" alt=""/>
                         </div>
@@ -321,7 +365,7 @@ import {SliderShow} from "@/components/home/slider";
                             <span className={"text-sm mt-2"}>SPAIN - PAINTER</span>
                         </div>
                     </div>
-                    <div className={"border-gold border py-4 px-6 flex items-center gap-4"}>
+                    <div className={"border-gold border py-4 px-6 flex items-center gap-4 my-2 lg:m-0"}>
                         <div>
                             <img src="/images/collectors.png" alt=""/>
                         </div>
@@ -330,7 +374,7 @@ import {SliderShow} from "@/components/home/slider";
                             <span className={"text-sm mt-2"}>SPAIN - PAINTER</span>
                         </div>
                     </div>
-                    <div className={"border-gold border py-4 px-6 flex items-center gap-4"}>
+                    <div className={"border-gold border py-4 px-6 flex items-center gap-4 my-2 lg:m-0"}>
                         <div>
                             <img src="/images/collectors.png" alt=""/>
                         </div>
@@ -339,7 +383,7 @@ import {SliderShow} from "@/components/home/slider";
                             <span className={"text-sm mt-2"}>SPAIN - PAINTER</span>
                         </div>
                     </div>
-                    <div className={"border-gold border py-4 px-6 flex items-center gap-4"}>
+                    <div className={"border-gold border py-4 px-6 flex items-center gap-4 my-2 lg:m-0"}>
                         <div>
                             <img src="/images/collectors.png" alt=""/>
                         </div>
@@ -362,11 +406,11 @@ import {SliderShow} from "@/components/home/slider";
                     </div>
                 </section>
             </section>
-            <section className={"flex px-44 py-20 gap-10 w-full"}>
-                <div className={"w-8/12"}>
+            <section className={"lg:flex lg:px-44 px-10 py-20 gap-10 w-full"}>
+                <div className={"lg:w-8/12"}>
                     <img src="/images/slider1.png" className={"w-full border-4 border-black p-2"} alt=""/>
                 </div>
-                <div className={"w-6/12 flex flex-col w-full"}>
+                <div className={"lg:w-6/12 flex flex-col w-full my-5 lg:my-0"}>
                     <div className={"flex gap-4"}>
                         <div>
                             <img src="/images/collectors.png" alt=""/>
@@ -397,9 +441,9 @@ import {SliderShow} from "@/components/home/slider";
             </section>
             <section className={"px-20"}>
                 <div className={"flex justify-center items-center pt-2 gap-6 w-full px-6"}>
-                    <span className={"border-gold  border-b w-2/5"}/>
-                    <h1 className={"text-title text-3xl font-bold   w-1/3 text-center block"}>ADORUART Magazine</h1>
-                    <span className={"border-gold  border-b w-2/5"}/>
+                    <div className={"border-gold  border-b w-full hidden lg:block"}> </div>
+                    <div className={"text-title text-4xl  w-full text-center"}>ADORUART Magazine</div>
+                    <div className={"border-gold  border-b w-full hidden lg:block"}></div>
                 </div>
                 {/*{*/}
                 {/*    data.blogs && (*/}
@@ -429,9 +473,9 @@ import {SliderShow} from "@/components/home/slider";
                 {/*                }*/}
                 {/*            </div>*/}
                 {/*        ):(*/}
-                            <div className={"flex gap-6 mt-12"}>
-                                <article className={"text-black flex flex-col gap-y-2 w-3/12"}>
-                                    <div><img src="/images/mag.png" alt=""/></div>
+                            <div className={"lg:flex gap-6 mt-12"}>
+                                <article className={"text-black flex flex-col gap-y-2 lg:w-3/12"}>
+                                    <div><img src="/images/mag.png" className={"w-full"} alt=""/></div>
                                     <div className={"flex gap-2"}>
                                         <span className={"font-bold text-title"}>Date:</span>
                                         <span className={"text-gray-400"}>3.28.2022</span>
@@ -448,8 +492,8 @@ import {SliderShow} from "@/components/home/slider";
                                            </span>
                                     </div>
                                 </article>
-                                <article className={"text-black flex flex-col gap-y-2 w-3/12"}>
-                                    <div><img src="/images/mag.png" alt=""/></div>
+                                <article className={"text-black flex flex-col gap-y-2 lg:w-3/12"}>
+                                    <div><img src="/images/mag.png" className={"w-full"} alt=""/></div>
                                     <div className={"flex gap-2"}>
                                         <span className={"font-bold text-title"}>Date:</span>
                                         <span className={"text-gray-400"}>3.28.2022</span>
@@ -466,8 +510,8 @@ import {SliderShow} from "@/components/home/slider";
                            </span>
                                     </div>
                                 </article>
-                                <article className={"text-black flex flex-col gap-y-2 w-3/12"}>
-                                    <div><img src="/images/mag.png" alt=""/></div>
+                                <article className={"text-black flex flex-col gap-y-2 lg:w-3/12"}>
+                                    <div><img src="/images/mag.png" className={"w-full"} alt=""/></div>
                                     <div className={"flex gap-2"}>
                                         <span className={"font-bold text-title"}>Date:</span>
                                         <span className={"text-gray-400"}>3.28.2022</span>
@@ -484,8 +528,8 @@ import {SliderShow} from "@/components/home/slider";
                            </span>
                                     </div>
                                 </article>
-                                <article className={"text-black flex flex-col gap-y-2 w-3/12"}>
-                                    <div><img src="/images/mag.png" alt=""/></div>
+                                <article className={"text-black flex flex-col gap-y-2 lg:w-3/12"}>
+                                    <div><img src="/images/mag.png" className={"w-full"} alt=""/></div>
                                     <div className={"flex gap-2"}>
                                         <span className={"font-bold text-title"}>Date:</span>
                                         <span className={"text-gray-400"}>3.28.2022</span>

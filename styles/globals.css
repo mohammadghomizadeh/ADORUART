@@ -3,9 +3,26 @@
 @import 'tailwindcss/utilities';
 
 
+
+
+
+
+
+
+
+
+
+
 @font-face {
   font-family: "Manrope";
   src: url("/fonts/Manrope.ttf");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: Gilroy;
+  src: url("/fonts/Gilroy.ttf");
   font-style: normal;
   font-weight: 400;
   font-display: swap;
@@ -15,7 +32,7 @@ html,
 body {
   padding: 0;
   margin: 0;
-  font-family: "Manrope";
+  font-family: Gilroy;
   color: #ffffff;
 }
 

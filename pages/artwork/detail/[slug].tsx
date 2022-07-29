@@ -18,7 +18,7 @@ function ArtWorkDetail()  {
                 <span> <MdOutlineKeyboardArrowRight/> </span>
                 <span>Acrylic on Canvas</span>
             </section>
-            <section className={"flex gap-6 my-8 px-20"}>
+            <section className={"lg:flex gap-6 my-8 lg:px-20 px-10"}>
                 <div>
                     <div className={"border-2 border-black p-1 rounded"}>
                         <img src="/images/sliderMain.png" className={"rounded"} alt=""/>
@@ -84,16 +84,16 @@ function ArtWorkDetail()  {
 
                 </div>
             </section>
-            <section className={"flex gap-16  justify-center border-b-2 border-t-2 border-gray-300 my-20 py-2"}>
-                <div className={"text-black w-2/12 flex flex-col items-center justify-center "}>
+            <section className={"lg:flex gap-16  justify-center items-center border-b-2 border-t-2 border-gray-300 my-20 py-2"}>
+                <div className={"text-black lg:w-2/12 flex flex-col items-center justify-center "}>
                     <span><AiFillTwitterCircle size={60}/></span>
                     <span>Original work delivered with a certificate of authenticity</span>
                 </div>
-                <div className={"text-black w-2/12"}>
+                <div className={"text-black lg:w-2/12 flex flex-col items-center justify-center"}>
                     <span className={"flex block items-center justify-center"}><AiFillTwitterCircle size={60}/></span>
                     <span>Shipping usually takes up to 7 days</span>
                 </div>
-                <div className={"text-black w-2/12"}>
+                <div className={"text-black lg:w-2/12 flex flex-col items-center justify-center"}>
                     <span className={"flex block items-center justify-center"}><AiFillTwitterCircle size={60}/></span>
                     <span>Free 14 day returns</span>
                 </div>
@@ -115,8 +115,11 @@ function ArtWorkDetail()  {
                     </a>
                 </Link>
             </section>
-            <section className={"flex gap-6 w-full px-20 bg-sub-header py-10"}>
-                <div className={"flex flex-col gap-y-14  text-black"}>
+            <section className={"lg:flex flex-row-reverse gap-6 w-full lg:px-20 px-10 bg-sub-header py-10"}>
+                <div>
+                    <img src="/images/simopnet.png"  />
+                </div>
+                <div className={"flex flex-col lg:gap-y-14 gap-y-6  text-black mt-5 lg:mt-0"}>
                     <span className={"text-2xl font-bold"}>
                         Edith Simonnet
                     </span>
@@ -145,12 +148,11 @@ function ArtWorkDetail()  {
                         </button>
                     </div>
                 </div>
-                <div>
-                    <img src="/images/simopnet.png"  />
-                </div>
             </section>
 
-            <section className={"py-10 text-black px-20"}>
+
+
+            <section className={"py-10 text-black lg:px-20 px-10"}>
                 <div className={" w-full justify-start items-center"}>
                     <div className={"float-left text-3xl font-bold pr-5"}>Other artworks by Edith  Simonnet</div>
                     <div className={"pt-5"}>
@@ -158,14 +160,15 @@ function ArtWorkDetail()  {
                     </div>
                 </div>
                 <div className={"clear-both"}></div>
+
                 <section id={"galleryItems"}>
                     <header className={"flex justify-end my-8"}>
                         <button className={"py-2 px-4 bg-sub-header rounded text-gray-400"}>
                             See more
                         </button>
                     </header>
-                    <section className={"flex gap-6 my-4"}>
-                        <article>
+                    <section className={"lg:flex gap-6 my-4"}>
+                        <article className={"flex flex-col items-center  justify-center lg:justify-start"}>
                             <div>
                                 <img src="/images/artwork2.png" width={250} height={250} className={"rounded border-4 border-primary p-2"} alt=""/>
                             </div>
@@ -194,7 +197,7 @@ function ArtWorkDetail()  {
                                 </div>
                             </div>
                         </article>
-                        <article>
+                        <article className={"flex flex-col items-center  justify-center lg:justify-start"}>
                             <div>
                                 <img src="/images/artwork2.png" width={250} height={250} className={"rounded border-4 border-primary p-2"} alt=""/>
                             </div>
@@ -223,7 +226,7 @@ function ArtWorkDetail()  {
                                 </div>
                             </div>
                         </article>
-                        <article>
+                        <article className={"flex flex-col items-center  justify-center lg:justify-start"}>
                             <div>
                                 <img src="/images/artwork2.png" width={250} height={250} className={"rounded border-4 border-primary p-2"} alt=""/>
                             </div>
@@ -252,7 +255,7 @@ function ArtWorkDetail()  {
                                 </div>
                             </div>
                         </article>
-                        <article>
+                        <article className={"flex flex-col items-center  justify-center lg:justify-start"}>
                             <div>
                                 <img src="/images/artwork2.png" width={250} height={250} className={"rounded border-4 border-primary p-2"} alt=""/>
                             </div>
@@ -281,7 +284,7 @@ function ArtWorkDetail()  {
                                 </div>
                             </div>
                         </article>
-                        <article>
+                        <article className={"flex flex-col items-center  justify-center lg:justify-start"}>
                             <div>
                                 <img src="/images/artwork2.png" width={250} height={250} className={"rounded border-4 border-primary p-2"} alt=""/>
                             </div>
@@ -310,7 +313,7 @@ function ArtWorkDetail()  {
                                 </div>
                             </div>
                         </article>
-                        <article>
+                        <article className={"flex flex-col items-center  justify-center lg:justify-start"}>
                             <div>
                                 <img src="/images/artwork2.png" width={250} height={250} className={"rounded border-4 border-primary p-2"} alt=""/>
                             </div>
@@ -343,7 +346,8 @@ function ArtWorkDetail()  {
 
                 </section>
             </section>
-            <section id={"galleryItems"} className={"bg-grayBG px-20"}>
+
+            <section id={"galleryItems"} className={"bg-grayBG lg:px-20 px-10"}>
                 <span className={"text-title font-bold text-3xl py-8 block"}>
                     You could also like
                 </span>
@@ -352,7 +356,7 @@ function ArtWorkDetail()  {
                         See more
                     </button>
                 </header>
-                <section className={"flex gap-6 my-4"}>
+                <section className={"lg:flex gap-6 my-4"}>
                     <article>
                         <div>
                             <img src="/images/artwork2.png" width={250} height={250} className={"rounded border-4 border-primary p-2"} alt=""/>

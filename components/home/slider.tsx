@@ -35,11 +35,11 @@ export const SliderShow = (props: Props) => {
             {/*            </Slider>*/}
             {/*    ):(*/}
                     <Slider {...settings}>
-                        <img src={"/images/homeslider/slider5.png"} className={"py-8"} />
-                        <img src={"/images/homeslider/slider1.png"} className={"py-8"} />
-                        <img src={"/images/homeslider/slider2.png"} className={"py-8"} />
-                        <img src={"/images/homeslider/slider3.png"} className={"py-8"} />
-                        <img src={"/images/homeslider/slider4.png"} className={"py-8"} />
+                        <img src={"/images/homeslider/slider5.png"} className={"lg:py-8"} />
+                        <img src={"/images/homeslider/slider1.png"} className={"lg:py-8"} />
+                        <img src={"/images/homeslider/slider2.png"} className={"lg:py-8"} />
+                        <img src={"/images/homeslider/slider3.png"} className={"lg:py-8"} />
+                        <img src={"/images/homeslider/slider4.png"} className={"lg:py-8"} />
                     </Slider>
             {/*    )*/}
             {/*}*/}

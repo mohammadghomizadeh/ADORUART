@@ -8,11 +8,11 @@ function Footer(){
                     <span className={"text-black text-3xl font-bold "}>
                         Subscribe to the newsletter
                     </span>
-                    <div className={"flex justify-center items-center w-full gap-6"}>
-                        <div className={"w-70%  "}>
+                    <div className={"lg:flex justify-center items-center w-full gap-6"}>
+                        <div className={"lg:w-70%  "}>
                             <input type="text" placeholder={"Email Address..."} className={"w-full rounded border border-gray-400 py-6 px-6"}/>
                         </div>
-                        <div className={"w-30% "}>
+                        <div className={"lg:w-30%  mt-5 lg:mt-0"}>
                             <button className={"text-white font-bold text-xl bg-black w-full p-6 rounded"}>SEND</button>
                         </div>
                     </div>
@@ -24,7 +24,7 @@ function Footer(){
                         IN THE PRESS
                     </span>
                 </div>
-                <div className={"flex gap-24  mt-8"}>
+                <div className={"flex lg:gap-24 gap-4  mt-8"}>
                     <a href=""><img src="/images/forbes.png" alt=""/></a>
                     <a href=""><img src="/images/boston.png" alt=""/></a>
                     <a href=""><img src="/images/forbes.png" alt=""/></a>
@@ -35,7 +35,7 @@ function Footer(){
                     <a href=""><img src="/images/boston.png" alt=""/></a>
                 </div>
             </section>
-            <section id="selected" className={"w-full bg-nft flex items-center justify-between font-Manrope text-white px-20 py-8"}>
+            <section id="selected" className={"w-full bg-nft lg:flex items-center justify-between font-Manrope text-white lg:px-20 px-10 py-8"}>
                <article className={"flex flex-col justify-center items-center"}>
                    <span><svg width="56" height="56" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M0 10.5V14H33.25V40.25H22.477C21.6965 37.2418 18.991 35 15.75 35C12.509 35 9.8035 37.2418 9.023 40.25H7V31.5H3.5V43.75H9.023C9.8035 46.7583 12.509 49 15.75 49C18.991 49 21.6965 46.7583 22.477 43.75H37.023C37.8035 46.7583 40.509 49 43.75 49C46.991 49 49.6965 46.7583 50.477 43.75H56V29.477L55.8898 29.2023L52.3898 18.7023L52.01 17.5H36.75V10.5H0ZM1.75 17.5V21H17.5V17.5H1.75ZM36.75 21H49.4917L52.5 29.9688V40.25H50.477C49.6965 37.2418 46.991 35 43.75 35C40.509 35 37.8035 37.2418 37.023 40.25H36.75V21ZM3.5 24.5V28H14V24.5H3.5ZM15.75 38.5C17.7048 38.5 19.25 40.0452 19.25 42C19.25 43.9548 17.7048 45.5 15.75 45.5C13.7952 45.5 12.25 43.9548 12.25 42C12.25 40.0452 13.7952 38.5 15.75 38.5ZM43.75 38.5C45.7048 38.5 47.25 40.0452 47.25 42C47.25 43.9548 45.7048 45.5 43.75 45.5C41.7952 45.5 40.25 43.9548 40.25 42C40.25 40.0452 41.7952 38.5 43.75 38.5Z" fill="white"/>
