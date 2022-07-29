@@ -9,7 +9,7 @@ import {Down} from "@/components/SVG/Arrows"
 import Link from "next/link";
 import {MenuArtwork,MenuDesign} from "@/components/base/Header/Menu";
 interface Props {
-    menus: any;
+    menus?: any;
 }
 function Header({menus}:Props)  {
     return (
