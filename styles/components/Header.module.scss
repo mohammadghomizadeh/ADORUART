@@ -1,0 +1,33 @@
+.header{
+  @apply bg-primary px-4 md:px-16 lg:px-20;
+}
+.nav{
+  @apply flex items-center justify-between py-6;
+}
+.menus{
+  @apply  relative w-full justify-center items-center gap-10 hidden lg:flex ;
+
+  & > div{
+    @apply flex items-center gap-2;
+  }
+  & > span{
+    @apply cursor-pointer;
+  }
+
+}
+.icons{
+  @apply flex justify-center items-center gap-6;
+}
+
+.artwork{
+  @apply hidden top-7 left-40;
+}
+.design{
+  @apply hidden top-7 left-40;
+}
+.menuHoverArtwork:hover .artwork{
+  @apply flex;
+}
+.menuHoverDesign:hover .design{
+  @apply flex;
+}

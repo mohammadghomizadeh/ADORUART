@@ -1,0 +1,211 @@
+.head{
+  @apply bg-primary px-20 flex pb-20 justify-center pt-10;
+  h1{
+    @apply text-56;
+  }
+  h2{
+    @apply text-40;
+  }
+  button{
+    @apply bg-secondary text-lg py-5 px-20 rounded-sm mt-20;
+  }
+}
+.slider{
+  @apply rounded-lg relative ;
+  border:1px solid white;
+  width:509px;
+  height: 381px;
+  img{
+    width:509px;
+    height: 430px;
+  }
+}
+.sliderItem{
+  @apply rounded-lg absolute -top-2 right-8 overflow-hidden;
+  width:509px;
+  height: 420px;
+}
+.discover{
+  @apply bg-gold flex justify-center flex-col items-center;
+  h3{
+    @apply  pt-24 text-title text-4xl;
+    font-style: normal;
+    font-weight: 800;
+  }
+  h4{
+    @apply flex justify-center pt-6 text-title text-2xl;
+  }
+  & > div{
+    @apply flex px-20 gap-6;
+    padding:70px 80px;
+    img{
+      width:424px;
+      height: 316px;
+    }
+  }
+   button{
+    @apply bg-secondary text-lg py-5 px-20 rounded-sm ;
+  }
+}
+.hoverParent{
+  @apply relative cursor-pointer;
+}
+.hoverParent:hover .hoverChild{
+  @apply opacity-100;
+}
+.hoverChild{
+ @apply  absolute bottom-0 opacity-50 w-full bg-black text-white block py-2 px-4 font-bold;
+}
+
+
+.artwork{
+  @apply flex flex-col justify-center items-center py-32;
+  button{
+    @apply  text-secondary mt-20  border-b-2 border-secondary;
+  }
+}
+.artworktitle{
+  @apply flex justify-center items-center pt-2 gap-6;
+  hr{
+    @apply border-gold w-80;
+  }
+  span{
+    @apply text-title text-4xl font-bold;
+  }
+
+}
+.artworkgallery{
+  @apply flex justify-center items-center px-20 gap-6 mt-20;
+  & > div{
+    @apply flex flex-col;
+  }
+  img{
+    height:316px;
+  }
+
+}
+.nft{
+  @apply flex flex-col justify-center items-center bg-nftHome py-32;
+  button{
+    @apply  text-secondary mt-20  border-b-2 border-secondary;
+  }
+}
+.nfttitle{
+  @apply flex justify-center items-center pt-2 gap-6;
+  hr{
+    @apply border-gold w-96;
+  }
+  span{
+    @apply text-title text-4xl font-bold;
+  }
+
+}
+.nftgallery{
+@apply px-20 mt-10;
+  img{
+    height: 321px;
+    width: 288px;
+  }
+}
+
+
+.collections{
+  @apply flex flex-col justify-center items-center py-32 px-20;
+  button{
+    @apply  text-secondary mt-20  border-b-2 border-secondary;
+  }
+}
+.collectionstitle{
+  @apply flex justify-center items-center pt-2 gap-6;
+  hr{
+    @apply border-gold w-40;
+
+  }
+  span{
+    @apply text-title text-4xl;
+    text-transform: capitalize;
+    font-weight: 800;
+    color: #3A3A3A;
+  }
+
+}
+.collectionsgallery{
+ @apply  flex gap-40 mt-24;
+  img{
+    height: 94px;
+  }
+
+}
+
+
+.browse{
+  @apply flex flex-col justify-center items-center bg-brows py-32 px-20;
+}
+.browsetitle{
+  @apply flex justify-center items-center pt-2 gap-6;
+  hr{
+    @apply border-gold w-96;
+  }
+  span{
+    @apply text-title text-4xl;
+  }
+
+}
+.browsegallery{
+  @apply px-20 my-20 flex;
+
+}
+
+
+.sales{
+  @apply flex flex-col justify-center items-center py-32 px-20 w-full;
+  button{
+    @apply  text-secondary mt-20  border-b-2 border-secondary;
+  }
+}
+.salestitle{
+  hr{
+    @apply border-gold w-full;
+  }
+  span{
+    @apply text-title text-4xl;
+  }
+
+}
+.salesgallery{
+  @apply flex justify-center items-center px-20 gap-6 mt-20;
+  & > div{
+    @apply flex flex-col;
+  }
+  img{
+    height:316px;
+  }
+
+}
+
+
+.callectors{
+  @apply flex flex-col justify-center items-center py-32 px-20 w-full;
+  button{
+    @apply  text-secondary mt-20  border-b-2 border-secondary;
+  }
+}
+.callectorstitle{
+  hr{
+    @apply border-gold w-full;
+  }
+  span{
+    @apply text-title text-4xl;
+  }
+
+}
+.callectorsgallery{
+  @apply flex justify-center items-center px-20 gap-6 mt-20;
+  & > div{
+    @apply flex flex-col;
+  }
+  img{
+    height:316px;
+  }
+
+}

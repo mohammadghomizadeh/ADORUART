@@ -1,0 +1,21 @@
+module.exports = {
+    'primary':'#2A3E59',
+    'primary-dark':'#273a52',
+    'secondary':'#707CAE',
+    'gold':'#D4A551',
+    'title':'#3A3A3A',
+    'nft':'#7B7575',
+    'nftHome':'rgba(123, 117, 117, 0.12)',
+    'brows':'#E5E5E5',
+    'btn-save-hover':'#BDBDBD',
+    'nav-link-hover':'#E2E3F3',
+    'sub-header':'#7B75754D',
+    'sub-header-p':'#7B75751F',
+    'sub-border':'#7B7575',
+    'grayBG':'#E5E5E5',
+    'menubg':'#CCC5C5',
+    'editbg':'rgba(123, 117, 117, 0.12);',
+    'filter':'#7B757580',
+    'search':'rgba(123, 117, 117, 0.09);',
+};
+
