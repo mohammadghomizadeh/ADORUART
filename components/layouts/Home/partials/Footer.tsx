@@ -1,10 +1,5 @@
 import React from "react";
-import FooterStyle from "@/styles/components/Footer.module.scss";
-import {FiTruck} from "react-icons/fi"
-import {AiOutlineForm} from "react-icons/ai"
-import {BsArrowReturnLeft,BsTelephoneFill} from "react-icons/bs"
-import {FaCcPaypal,FaCcVisa,FaInstagramSquare} from "react-icons/fa"
-import {RiFacebookCircleFill} from "react-icons/Ri"
+import {BsTelephoneFill} from "react-icons/bs"
 function Footer(){
     return (
         <footer>
