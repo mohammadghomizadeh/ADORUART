@@ -18,34 +18,31 @@ export const SliderShow = (props: Props) => {
         autoplaySpeed: 3000,
         arrows:false,
         beforeChange: function(currentSlide:any, nextSlide:any) {
-            console.log("before change", currentSlide, nextSlide);
         },
         afterChange: function(currentSlide:any) {
-            console.log("after change", currentSlide);
         }
     };
     return (
         <div>
-            {
-                data.sliders ? (
-                        <Slider {...settings}>
-                            {
-                                data.sliders.map((item:any,i:number)=>
-                                    <img src={"http://127.0.0.1:8000"+item.image} className={"py-8"} />
-                                )
-                            }
-                        </Slider>
-                ):(
+            {/*{*/}
+            {/*    data.sliders ? (*/}
+            {/*            <Slider {...settings}>*/}
+            {/*                {*/}
+            {/*                    data.sliders.map((item:any,i:number)=>*/}
+            {/*                        <img src={"http://127.0.0.1:8000"+item.image} className={"py-8"} />*/}
+            {/*                    )*/}
+            {/*                }*/}
+            {/*            </Slider>*/}
+            {/*    ):(*/}
                     <Slider {...settings}>
-
                         <img src={"/images/homeslider/slider5.png"} className={"py-8"} />
                         <img src={"/images/homeslider/slider1.png"} className={"py-8"} />
                         <img src={"/images/homeslider/slider2.png"} className={"py-8"} />
                         <img src={"/images/homeslider/slider3.png"} className={"py-8"} />
                         <img src={"/images/homeslider/slider4.png"} className={"py-8"} />
                     </Slider>
-                )
-            }
+            {/*    )*/}
+            {/*}*/}
 
         </div>
     );

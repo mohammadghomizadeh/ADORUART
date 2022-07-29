@@ -401,34 +401,34 @@ import {SliderShow} from "@/components/home/slider";
                     <h1 className={"text-title text-3xl font-bold   w-1/3 text-center block"}>ADORUART Magazine</h1>
                     <span className={"border-gold  border-b w-2/5"}/>
                 </div>
-                {
-                    data.blogs && (
-                        data.blogs.length > 0 ?(
-                            <div className={"flex gap-6 mt-12"}>
-                                {
-                                    data.blogs.map((blog:any,blogI:number)=>
-                                            <article className={"text-black flex flex-col gap-y-2 w-3/12"}>
-                                                <div><img src={"http://127.0.0.1:8000"+blog.logo} alt="" className={"w-312px h-312px"}/></div>
-                                                <div className={"flex gap-2"}>
-                                                    <span className={"font-bold text-title"}>Date:</span>
-                                                    <span className={"text-gray-400"}>{blog.created_at}</span>
-                                                </div>
-                                                <div className={"font-bold text-lg h-51px"}>
-                                                    <span>{truncate(blog.title,60,'...')}</span>
-                                                </div>
-                                                <div className={"text-lg h-51px"}>
-                                                    <p>{truncate(blog.short_description,60,'...')}</p>
-                                                </div>
-                                                <div className={"mt-4"}>
-                           <span className={"text-gold border-b border-gold"}>
-                               <a href="">Read more</a>
-                           </span>
-                                                </div>
-                                            </article>
-                                    )
-                                }
-                            </div>
-                        ):(
+                {/*{*/}
+                {/*    data.blogs && (*/}
+                {/*        data.blogs.length > 0 ?(*/}
+                {/*            <div className={"flex gap-6 mt-12"}>*/}
+                {/*                {*/}
+                {/*                    data.blogs.map((blog:any,blogI:number)=>*/}
+                {/*                            <article className={"text-black flex flex-col gap-y-2 w-3/12"}>*/}
+                {/*                                <div><img src={"http://127.0.0.1:8000"+blog.logo} alt="" className={"w-312px h-312px"}/></div>*/}
+                {/*                                <div className={"flex gap-2"}>*/}
+                {/*                                    <span className={"font-bold text-title"}>Date:</span>*/}
+                {/*                                    <span className={"text-gray-400"}>{blog.created_at}</span>*/}
+                {/*                                </div>*/}
+                {/*                                <div className={"font-bold text-lg h-51px"}>*/}
+                {/*                                    <span>{truncate(blog.title,60,'...')}</span>*/}
+                {/*                                </div>*/}
+                {/*                                <div className={"text-lg h-51px"}>*/}
+                {/*                                    <p>{truncate(blog.short_description,60,'...')}</p>*/}
+                {/*                                </div>*/}
+                {/*                                <div className={"mt-4"}>*/}
+                {/*           <span className={"text-gold border-b border-gold"}>*/}
+                {/*               <a href="">Read more</a>*/}
+                {/*           </span>*/}
+                {/*                                </div>*/}
+                {/*                            </article>*/}
+                {/*                    )*/}
+                {/*                }*/}
+                {/*            </div>*/}
+                {/*        ):(*/}
                             <div className={"flex gap-6 mt-12"}>
                                 <article className={"text-black flex flex-col gap-y-2 w-3/12"}>
                                     <div><img src="/images/mag.png" alt=""/></div>
@@ -503,9 +503,9 @@ import {SliderShow} from "@/components/home/slider";
                                     </div>
                                 </article>
                             </div>
-                        )
-                    )
-                }
+                {/*        )*/}
+                {/*    )*/}
+                {/*}*/}
 
             </section>
             <section className={"w-full flex items-center justify-center my-20"}>
