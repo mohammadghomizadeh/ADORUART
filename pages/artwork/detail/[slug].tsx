@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import Image from "next/image";
 import HomeLayout from "@/components/layouts/Home";
 import HomeStyle from "@/styles/pages/Home.module.scss";
@@ -7,50 +7,105 @@ import {BsPinterest,BsFacebook} from "react-icons/bs"
 import {AiFillTwitterCircle} from "react-icons/ai"
 import {MdOutlineKeyboardArrowRight} from "react-icons/md"
 import Link from "next/link";
+import parse from 'html-react-parser'
+import {PRODUCT_SLUG, ADD_TO_CART,EXIST_CART} from "@/hooks/useApi";
+import {random} from "nanoid";
 function ArtWorkDetail()  {
+    const [product,setProduct] = useState<any>("");
+    const [latests,setLatests] = useState<any>("");
+    useEffect(() => {
+        if (typeof window !== "undefined") {
+            var slug:any = (url:any) => new URL(url).pathname.match(/[^\/]+/g)
+            var productSlug:any = slug(window.location.href);
+            var singleSlug = productSlug[2];
+        }
+        PRODUCT_SLUG(singleSlug).then((result:any)=>{
+            setProduct(result.data.product);
+            setLatests(result.data.latests);
+        })
+    }, []);
+
+    const AddToCartHandler = (e:any,data:any) =>{
+        e.preventDefault();
+        e.stopPropagation();
+        const ICARTDATA = {
+            'uuid':localStorage.getItem("uuid") ? localStorage.getItem("uuid") : null,
+            'cookie':localStorage.getItem("gustCookies"),
+            'product_id':data.id
+        }
+        EXIST_CART(ICARTDATA).then((res:any)=>{
+            if(res.data.status === false){
+                ADD_TO_CART(ICARTDATA).then((res:any)=>{
+                    window.location.href = "/checkout/info?c="+localStorage.getItem("gustCookies")
+                })
+            }else{
+                window.location.href = "/checkout/info?c="+localStorage.getItem("gustCookies")
+            }
+        })
+
+
+    }
+
+
 
     return (
         <HomeLayout title={"Home"}>
             <section className={"flex items-center gap-4 bg-sub-header py-4 px-20 text-black"}>
                 <span>Artwork</span>
                 <span> <MdOutlineKeyboardArrowRight/></span>
-                <span>Painting</span>
+                <span><a >{product && product.category.name}</a></span>
                 <span> <MdOutlineKeyboardArrowRight/> </span>
-                <span>Acrylic on Canvas</span>
+                <span>{product && product.title}</span>
             </section>
             <section className={"lg:flex gap-6 my-8 lg:px-20 px-10"}>
-                <div>
+                <div className={"w-3/5"}>
                     <div className={"border-2 border-black p-1 rounded"}>
-                        <img src="/images/sliderMain.png" className={"rounded"} alt=""/>
+                        {
+                            product.image ? (
+                                <img src={product.image} className={"rounded w-full h-full"} alt=""/>
+                            ):(
+                                <img src="/images/sliderMain.png" className={"rounded"} alt=""/>
+                            )
+                        }
+
+
                     </div>
                     <div>
                         <ul className={"flex gap-4 mt-4"}>
-                            <li><img src="/images/slide1.png" alt=""/></li>
-                            <li><img src="/images/slide1.png" alt=""/></li>
-                            <li><img src="/images/slide1.png" alt=""/></li>
-                            <li><img src="/images/slide1.png" alt=""/></li>
-                            <li><img src="/images/slide1.png" alt=""/></li>
-                            <li><img src="/images/slide1.png" alt=""/></li>
-                            <li><img src="/images/slide1.png" alt=""/></li>
+                            {
+                                product.galleries ?(
+                                    product.galleries.map((gallery:any,i:number)=>
+                                        <li key={i}><img width={80} height={100} src={gallery.image} alt=""/></li>
+                                    )
+                                ):(
+                                        <li className={"text-black"}>No Gallery...</li>
+                                        // <li > <img width={150} src="/images/sliderMain.png" className={"rounded"} alt=""/></li>
+                                )
+                            }
                         </ul>
 
                     </div>
                 </div>
-                <div className={"flex flex-col"}>
-                    <span className={"text-gold text-xl font-bold"}>Artwork Name</span>
+                <div className={"flex flex-col w-2/5"}>
+                    <span className={"text-gold text-xl font-bold"}>{product && product.title}</span>
                     <span className={"text-gray-400 mt-2"}>Acrylic on Canvas</span>
-                    <span className={"text-black my-4"}>Edith Simonnet, Germany, 2022</span>
+                    <span className={"text-black my-4"}>{product.user ? product.user.name : 'ADORUART'}, Germany, 2022</span>
                     <hr className={""}/>
-                    <div className={"flex gap-2 mt-4"}>
-                        <span className={"text-gray-400"}>Size:</span>
-                        <span className={"text-black"}>50 x 75 cm</span>
-                    </div>
+                    {
+                        product.custome_size && (
+                            <div className={"flex gap-2 mt-4"}>
+                                <span className={"text-gray-400"}>Size:</span>
+                                <span className={"text-black"}>{product.custome_size}</span>
+                            </div>
+                        )
+                    }
+
                     <div className={"flex gap-2"}>
                         <span className={"text-gray-400"}>Price:</span>
                         <span className={"text-black font-bold"}>2,500$</span>
                     </div>
                     <div className={"my-6"}>
-                        <button className={"bg-secondary p-3 border border-secondary rounded"}>ACQUIRE THIS ARTWORK</button>
+                        <button onClick={(e:any)=>AddToCartHandler(e,product)} className={"bg-secondary p-3 border border-secondary rounded"}>ACQUIRE THIS ARTWORK</button>
                         <button className={"text-secondary border-secondary border rounded p-3 ml-5"}>MAKE US AN OFFER</button>
                     </div>
                     <div className={"mb-4"}>
@@ -59,7 +114,7 @@ function ArtWorkDetail()  {
                                 type="checkbox" value="" id="flexCheckDefault" />
                                 <label className="form-check-label inline-block text-gray-800"
                                        htmlFor="flexCheckDefault">
-                                    I would like to give this work as a gift and add a personal message.
+                                    {product && parse(product.short_description)}
                                 </label>
                         </div>
                     </div>
@@ -103,25 +158,34 @@ function ArtWorkDetail()  {
                     About the artwork
                 </span>
                 <p>
-                    A structured three-dimensional painting: the finest, highly pigmented acrylic paints, combined with real 24 carat gold on 4cm deep canvas, finally finished with the neutral
-                    varnish, which enhances the luminosity of the colors and also protects the picture from dust and UV rays.
-                    Thanks to the lively structured surface and the use of real gold, the
-                    picture looks like a noble piece of jewelry and a statement in the room.
-                    The painting is...
+                    {product && parse(product.description)}
                 </p>
-                <Link href={""}>
-                    <a className={"text-secondary border-b my-2"}>
-                        Learn more
-                    </a>
-                </Link>
+                {/*<Link href={""}>*/}
+                {/*    <a className={"text-secondary border-b my-2"}>*/}
+                {/*        Learn more*/}
+                {/*    </a>*/}
+                {/*</Link>*/}
             </section>
-            <section className={"lg:flex flex-row-reverse gap-6 w-full lg:px-20 px-10 bg-sub-header py-10"}>
+            <section className={"lg:flex flex-row-reverse gap-6 w-full lg:px-20 px-10 bg-sub-header py-10 mt-8"}>
                 <div>
-                    <img src="/images/simopnet.png"  />
+
+
+                    {
+                        product.user ? (
+                            product.user.avatar ? (
+                                <img src={product.user.avatar}  />
+                            ):(
+                                <img src="/images/simopnet.png"  />
+                            )
+                        ):(
+                            <img src="/images/simopnet.png"  />
+                        )
+                    }
+
                 </div>
                 <div className={"flex flex-col lg:gap-y-14 gap-y-6  text-black mt-5 lg:mt-0"}>
                     <span className={"text-2xl font-bold"}>
-                        Edith Simonnet
+                        {product.user && product.user.name}
                     </span>
                     <p>
                         I believe color reveals the soul of the artist and can affect the viewer
@@ -154,7 +218,7 @@ function ArtWorkDetail()  {
 
             <section className={"py-10 text-black lg:px-20 px-10"}>
                 <div className={" w-full justify-start items-center"}>
-                    <div className={"float-left text-3xl font-bold pr-5"}>Other artworks by Edith  Simonnet</div>
+                    <div className={"float-left text-3xl font-bold pr-5"}>Other artworks by {product.user && product.user.name}</div>
                     <div className={"pt-5"}>
                         <hr className={"h-2px text-gold bg-gold"}/>
                     </div>
@@ -163,185 +227,212 @@ function ArtWorkDetail()  {
 
                 <section id={"galleryItems"}>
                     <header className={"flex justify-end my-8"}>
-                        <button className={"py-2 px-4 bg-sub-header rounded text-gray-400"}>
+                        <a href={"/artworks"} className={"py-2 px-4 bg-sub-header rounded text-gray-400"}>
                             See more
-                        </button>
+                        </a>
                     </header>
                     <section className={"lg:flex gap-6 my-4"}>
-                        <article className={"flex flex-col items-center  justify-center lg:justify-start"}>
-                            <div>
-                                <img src="/images/artwork2.png" width={250} height={250} className={"rounded border-4 border-primary p-2"} alt=""/>
-                            </div>
-                            <div className={"flex flex-col gap-y-2 mt-4"}>
+                        {
+                            product.user && (
+                                product.user.products ? (
+                                    product.user.products.map((userPro:any,ii:number)=>
+                                            <article key={ii} className={"flex flex-col items-center  justify-center lg:justify-start"}>
+                                                <div>
+                                                    {
+                                                        userPro.image ? (
+                                                            <img src={userPro.image} width={250} height={250} className={"rounded border-4 border-primary p-2"} alt=""/>
+                                                        ) :(
+                                                            <img src="/images/artwork2.png" width={250} height={250} className={"rounded border-4 border-primary p-2"} alt=""/>
+                                                        )
+                                                    }
+
+                                                </div>
+                                                <div className={"flex flex-col gap-y-2 mt-4"}>
                             <span className={"text-gold font-bold"}>
-                                Artwork Name
+                                <a href={"/artwork/detail/"+userPro.slug}>{userPro && userPro.title}</a>
                             </span>
-                                <span className={"text-gray-400"}>
+                                                    <span className={"text-gray-400"}>
                                 Acrylic on Canvas
                             </span>
-                                <div className={"flex gap-2"}>
-                               <span className={"text-gray-400"}>
-                                   Size:
-                               </span>
-                                    <span>
-                                    50 x 75 cm
-                                </span>
-                                </div>
-                                <div className={"flex gap-2"}>
+                                                    {
+                                                        userPro.custome_size && (
+                                                            <div className={"flex gap-2"}>
+                                   <span className={"text-gray-400"}>
+                                       Size:
+                                   </span>
+                                                                <span>
+                                                                    {userPro && userPro.custome_size}
+                                    </span>
+                                                            </div>
+                                                        )
+                                                    }
+
+                                                    <div className={"flex gap-2"}>
                                <span className={"text-gray-400"}>
                                    Price:
                                </span>
-                                    <span>
-                                    2,500$
+                                                        <span>
+                                    {userPro.price}$
                                 </span>
-                                </div>
-                            </div>
-                        </article>
-                        <article className={"flex flex-col items-center  justify-center lg:justify-start"}>
-                            <div>
-                                <img src="/images/artwork2.png" width={250} height={250} className={"rounded border-4 border-primary p-2"} alt=""/>
-                            </div>
-                            <div className={"flex flex-col gap-y-2 mt-4"}>
+                                                    </div>
+                                                </div>
+                                            </article>
+                                    )
+                                ):(
+                                    <>
+                                        <article className={"flex flex-col items-center  justify-center lg:justify-start"}>
+                                            <div>
+                                                <img src="/images/artwork2.png" width={250} height={250} className={"rounded border-4 border-primary p-2"} alt=""/>
+                                            </div>
+                                            <div className={"flex flex-col gap-y-2 mt-4"}>
                             <span className={"text-gold font-bold"}>
                                 Artwork Name
                             </span>
-                                <span className={"text-gray-400"}>
+                                                <span className={"text-gray-400"}>
                                 Acrylic on Canvas
                             </span>
-                                <div className={"flex gap-2"}>
+                                                <div className={"flex gap-2"}>
                                <span className={"text-gray-400"}>
                                    Size:
                                </span>
-                                    <span>
+                                                    <span>
                                     50 x 75 cm
                                 </span>
-                                </div>
-                                <div className={"flex gap-2"}>
+                                                </div>
+                                                <div className={"flex gap-2"}>
                                <span className={"text-gray-400"}>
                                    Price:
                                </span>
-                                    <span>
+                                                    <span>
                                     2,500$
                                 </span>
-                                </div>
-                            </div>
-                        </article>
-                        <article className={"flex flex-col items-center  justify-center lg:justify-start"}>
-                            <div>
-                                <img src="/images/artwork2.png" width={250} height={250} className={"rounded border-4 border-primary p-2"} alt=""/>
-                            </div>
-                            <div className={"flex flex-col gap-y-2 mt-4"}>
+                                                </div>
+                                            </div>
+                                        </article>
+                                        <article className={"flex flex-col items-center  justify-center lg:justify-start"}>
+                                            <div>
+                                                <img src="/images/artwork2.png" width={250} height={250} className={"rounded border-4 border-primary p-2"} alt=""/>
+                                            </div>
+                                            <div className={"flex flex-col gap-y-2 mt-4"}>
                             <span className={"text-gold font-bold"}>
                                 Artwork Name
                             </span>
-                                <span className={"text-gray-400"}>
+                                                <span className={"text-gray-400"}>
                                 Acrylic on Canvas
                             </span>
-                                <div className={"flex gap-2"}>
+                                                <div className={"flex gap-2"}>
                                <span className={"text-gray-400"}>
                                    Size:
                                </span>
-                                    <span>
+                                                    <span>
                                     50 x 75 cm
                                 </span>
-                                </div>
-                                <div className={"flex gap-2"}>
+                                                </div>
+                                                <div className={"flex gap-2"}>
                                <span className={"text-gray-400"}>
                                    Price:
                                </span>
-                                    <span>
+                                                    <span>
                                     2,500$
                                 </span>
-                                </div>
-                            </div>
-                        </article>
-                        <article className={"flex flex-col items-center  justify-center lg:justify-start"}>
-                            <div>
-                                <img src="/images/artwork2.png" width={250} height={250} className={"rounded border-4 border-primary p-2"} alt=""/>
-                            </div>
-                            <div className={"flex flex-col gap-y-2 mt-4"}>
+                                                </div>
+                                            </div>
+                                        </article>
+                                        <article className={"flex flex-col items-center  justify-center lg:justify-start"}>
+                                            <div>
+                                                <img src="/images/artwork2.png" width={250} height={250} className={"rounded border-4 border-primary p-2"} alt=""/>
+                                            </div>
+                                            <div className={"flex flex-col gap-y-2 mt-4"}>
                             <span className={"text-gold font-bold"}>
                                 Artwork Name
                             </span>
-                                <span className={"text-gray-400"}>
+                                                <span className={"text-gray-400"}>
                                 Acrylic on Canvas
                             </span>
-                                <div className={"flex gap-2"}>
+                                                <div className={"flex gap-2"}>
                                <span className={"text-gray-400"}>
                                    Size:
                                </span>
-                                    <span>
+                                                    <span>
                                     50 x 75 cm
                                 </span>
-                                </div>
-                                <div className={"flex gap-2"}>
+                                                </div>
+                                                <div className={"flex gap-2"}>
                                <span className={"text-gray-400"}>
                                    Price:
                                </span>
-                                    <span>
+                                                    <span>
                                     2,500$
                                 </span>
-                                </div>
-                            </div>
-                        </article>
-                        <article className={"flex flex-col items-center  justify-center lg:justify-start"}>
-                            <div>
-                                <img src="/images/artwork2.png" width={250} height={250} className={"rounded border-4 border-primary p-2"} alt=""/>
-                            </div>
-                            <div className={"flex flex-col gap-y-2 mt-4"}>
+                                                </div>
+                                            </div>
+                                        </article>
+                                        <article className={"flex flex-col items-center  justify-center lg:justify-start"}>
+                                            <div>
+                                                <img src="/images/artwork2.png" width={250} height={250} className={"rounded border-4 border-primary p-2"} alt=""/>
+                                            </div>
+                                            <div className={"flex flex-col gap-y-2 mt-4"}>
                             <span className={"text-gold font-bold"}>
                                 Artwork Name
                             </span>
-                                <span className={"text-gray-400"}>
+                                                <span className={"text-gray-400"}>
                                 Acrylic on Canvas
                             </span>
-                                <div className={"flex gap-2"}>
+                                                <div className={"flex gap-2"}>
                                <span className={"text-gray-400"}>
                                    Size:
                                </span>
-                                    <span>
+                                                    <span>
                                     50 x 75 cm
                                 </span>
-                                </div>
-                                <div className={"flex gap-2"}>
+                                                </div>
+                                                <div className={"flex gap-2"}>
                                <span className={"text-gray-400"}>
                                    Price:
                                </span>
-                                    <span>
+                                                    <span>
                                     2,500$
                                 </span>
-                                </div>
-                            </div>
-                        </article>
-                        <article className={"flex flex-col items-center  justify-center lg:justify-start"}>
-                            <div>
-                                <img src="/images/artwork2.png" width={250} height={250} className={"rounded border-4 border-primary p-2"} alt=""/>
-                            </div>
-                            <div className={"flex flex-col gap-y-2 mt-4"}>
+                                                </div>
+                                            </div>
+                                        </article>
+                                        <article className={"flex flex-col items-center  justify-center lg:justify-start"}>
+                                            <div>
+                                                <img src="/images/artwork2.png" width={250} height={250} className={"rounded border-4 border-primary p-2"} alt=""/>
+                                            </div>
+                                            <div className={"flex flex-col gap-y-2 mt-4"}>
                             <span className={"text-gold font-bold"}>
                                 Artwork Name
                             </span>
-                                <span className={"text-gray-400"}>
+                                                <span className={"text-gray-400"}>
                                 Acrylic on Canvas
                             </span>
-                                <div className={"flex gap-2"}>
+                                                <div className={"flex gap-2"}>
                                <span className={"text-gray-400"}>
                                    Size:
                                </span>
-                                    <span>
+                                                    <span>
                                     50 x 75 cm
                                 </span>
-                                </div>
-                                <div className={"flex gap-2"}>
+                                                </div>
+                                                <div className={"flex gap-2"}>
                                <span className={"text-gray-400"}>
                                    Price:
                                </span>
-                                    <span>
+                                                    <span>
                                     2,500$
                                 </span>
-                                </div>
-                            </div>
-                        </article>
+                                                </div>
+                                            </div>
+                                        </article>
+                                    </>
+                                )
+                            )
+
+
+                        }
+
+
                     </section>
 
                 </section>
@@ -352,185 +443,61 @@ function ArtWorkDetail()  {
                     You could also like
                 </span>
                 <header className={"flex justify-end my-8"}>
-                    <button className={"py-2 px-4 bg-sub-header rounded text-gray-400"}>
+                    <a href={"/artworks"} className={"py-2 px-4 bg-sub-header rounded text-gray-400"}>
                         See more
-                    </button>
+                    </a>
                 </header>
                 <section className={"lg:flex gap-6 my-4"}>
-                    <article>
-                        <div>
-                            <img src="/images/artwork2.png" width={250} height={250} className={"rounded border-4 border-primary p-2"} alt=""/>
-                        </div>
-                        <div className={"flex flex-col gap-y-2 mt-4"}>
+                    {
+                        latests && (
+                            latests.map((lastPro:any,lastKey:number)=>
+                                    <article key={lastKey}>
+                                        <div>
+                                            {
+                                                lastPro.image ? (
+                                                    <img src={lastPro.image} width={250} height={250} className={"rounded border-4 border-primary p-2"} alt={lastPro.title}/>
+                                                ):(
+                                                    <img src="/images/artwork2.png" width={250} height={250} className={"rounded border-4 border-primary p-2"} alt=""/>
+                                                )
+                                            }
+
+                                        </div>
+                                        <div className={"flex flex-col gap-y-2 mt-4"}>
                             <span className={"text-gold font-bold"}>
-                                Artwork Name
+                                <a href={"/artwork/detail/"+lastPro.slug}>{lastPro && lastPro.title}</a>
                             </span>
-                            <span className={"text-gray-400"}>
+                                            <span className={"text-gray-400"}>
                                 Acrylic on Canvas
                             </span>
-                            <div className={"flex gap-2"}>
+                                            {
+                                                lastPro.custome_size && (
+                                                    <div className={"flex gap-2"}>
                                <span className={"text-gray-400"}>
                                    Size:
                                </span>
-                                <span>
-                                    50 x 75 cm
+                                                        <span className={"text-black"}>
+                                    {lastPro ? (lastPro.custome_size) : ('50 x 75 cm')}
                                 </span>
-                            </div>
-                            <div className={"flex gap-2"}>
+                                                    </div>
+                                                )
+                                            }
+
+
+                                            <div className={"flex gap-2"}>
                                <span className={"text-gray-400"}>
                                    Price:
                                </span>
-                                <span>
-                                    2,500$
+                                                <span className={"text-black"}>
+                                    {lastPro && lastPro.price}$
                                 </span>
-                            </div>
-                        </div>
-                    </article>
-                    <article>
-                        <div>
-                            <img src="/images/artwork2.png" width={250} height={250} className={"rounded border-4 border-primary p-2"} alt=""/>
-                        </div>
-                        <div className={"flex flex-col gap-y-2 mt-4"}>
-                            <span className={"text-gold font-bold"}>
-                                Artwork Name
-                            </span>
-                            <span className={"text-gray-400"}>
-                                Acrylic on Canvas
-                            </span>
-                            <div className={"flex gap-2"}>
-                               <span className={"text-gray-400"}>
-                                   Size:
-                               </span>
-                                <span>
-                                    50 x 75 cm
-                                </span>
-                            </div>
-                            <div className={"flex gap-2"}>
-                               <span className={"text-gray-400"}>
-                                   Price:
-                               </span>
-                                <span>
-                                    2,500$
-                                </span>
-                            </div>
-                        </div>
-                    </article>
-                    <article>
-                        <div>
-                            <img src="/images/artwork2.png" width={250} height={250} className={"rounded border-4 border-primary p-2"} alt=""/>
-                        </div>
-                        <div className={"flex flex-col gap-y-2 mt-4"}>
-                            <span className={"text-gold font-bold"}>
-                                Artwork Name
-                            </span>
-                            <span className={"text-gray-400"}>
-                                Acrylic on Canvas
-                            </span>
-                            <div className={"flex gap-2"}>
-                               <span className={"text-gray-400"}>
-                                   Size:
-                               </span>
-                                <span>
-                                    50 x 75 cm
-                                </span>
-                            </div>
-                            <div className={"flex gap-2"}>
-                               <span className={"text-gray-400"}>
-                                   Price:
-                               </span>
-                                <span>
-                                    2,500$
-                                </span>
-                            </div>
-                        </div>
-                    </article>
-                    <article>
-                        <div>
-                            <img src="/images/artwork2.png" width={250} height={250} className={"rounded border-4 border-primary p-2"} alt=""/>
-                        </div>
-                        <div className={"flex flex-col gap-y-2 mt-4"}>
-                            <span className={"text-gold font-bold"}>
-                                Artwork Name
-                            </span>
-                            <span className={"text-gray-400"}>
-                                Acrylic on Canvas
-                            </span>
-                            <div className={"flex gap-2"}>
-                               <span className={"text-gray-400"}>
-                                   Size:
-                               </span>
-                                <span>
-                                    50 x 75 cm
-                                </span>
-                            </div>
-                            <div className={"flex gap-2"}>
-                               <span className={"text-gray-400"}>
-                                   Price:
-                               </span>
-                                <span>
-                                    2,500$
-                                </span>
-                            </div>
-                        </div>
-                    </article>
-                    <article>
-                        <div>
-                            <img src="/images/artwork2.png" width={250} height={250} className={"rounded border-4 border-primary p-2"} alt=""/>
-                        </div>
-                        <div className={"flex flex-col gap-y-2 mt-4"}>
-                            <span className={"text-gold font-bold"}>
-                                Artwork Name
-                            </span>
-                            <span className={"text-gray-400"}>
-                                Acrylic on Canvas
-                            </span>
-                            <div className={"flex gap-2"}>
-                               <span className={"text-gray-400"}>
-                                   Size:
-                               </span>
-                                <span>
-                                    50 x 75 cm
-                                </span>
-                            </div>
-                            <div className={"flex gap-2"}>
-                               <span className={"text-gray-400"}>
-                                   Price:
-                               </span>
-                                <span>
-                                    2,500$
-                                </span>
-                            </div>
-                        </div>
-                    </article>
-                    <article>
-                        <div>
-                            <img src="/images/artwork2.png" width={250} height={250} className={"rounded border-4 border-primary p-2"} alt=""/>
-                        </div>
-                        <div className={"flex flex-col gap-y-2 mt-4"}>
-                            <span className={"text-gold font-bold"}>
-                                Artwork Name
-                            </span>
-                            <span className={"text-gray-400"}>
-                                Acrylic on Canvas
-                            </span>
-                            <div className={"flex gap-2"}>
-                               <span className={"text-gray-400"}>
-                                   Size:
-                               </span>
-                                <span>
-                                    50 x 75 cm
-                                </span>
-                            </div>
-                            <div className={"flex gap-2"}>
-                               <span className={"text-gray-400"}>
-                                   Price:
-                               </span>
-                                <span>
-                                    2,500$
-                                </span>
-                            </div>
-                        </div>
-                    </article>
+                                            </div>
+                                        </div>
+                                    </article>
+                            )
+                        )
+                    }
+
+
                 </section>
 
             </section>

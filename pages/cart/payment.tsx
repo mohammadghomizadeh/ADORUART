@@ -79,8 +79,8 @@ function CartPayment()  {
                            </button>
                        </div>
                    </section>
-                   <section className={"w-2/5"}>
-                       <article className={" border-b-0  border border-gray-300 rounded "}>
+                   <section className={"w-2/5 "}>
+                       <article className={" border-b-0  border border-gray-300 rounded  "}>
                            <section className={"p-4"}>
                                <div className={"text-black flex gap-4"}>
                                    <div className={"w-6/12 h-118px"}>

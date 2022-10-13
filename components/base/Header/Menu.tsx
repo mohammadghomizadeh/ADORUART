@@ -12,50 +12,50 @@ export const MenuArtwork = (props: Props) => {
                 <div className={"bg-menubg py-10 px-8"}>
                     <div className={"pb-4"}>
 
-                        <Link href={"/Painting"}>
+                        <a href={"/Painting"}>
                             <a>
                                 <span className={"text-gold font-bold border-b border-gold"}>
                                  Painting
                                 </span>
                             </a>
-                        </Link>
+                        </a>
                     </div>
                     <div>
                         <ul className={"flex flex-col gap-2 text-title font-semibold"}>
                             <li>
-                                <Link href={"/Sculpture"}>
+                                <a href={"/Sculpture"}>
                                     <a>Sculpture</a>
-                                </Link>
+                                </a>
                             </li>
                             <li>
-                                <Link href={"/Photography"}>
+                                <a href={"/Photography"}>
                                     <a>Photography</a>
-                                </Link>
+                                </a>
                             </li>
                             <li>
-                                <Link href={"/Drawing"}>
+                                <a href={"/Drawing"}>
                                     <a>Drawing</a>
-                                </Link>
+                                </a>
                             </li>
                             <li>
-                                <Link href={"/Work"}>
+                                <a href={"/Work"}>
                                     <a>Work on paper</a>
-                                </Link>
+                                </a>
                             </li>
                             <li>
-                                <Link href={"/media"}>
+                                <a href={"/media"}>
                                     <a>Other media</a>
-                                </Link>
+                                </a>
                             </li>
                             <li>
-                                <Link href={"/latest"}>
+                                <a href={"/latest"}>
                                     <a>Our latest works</a>
-                                </Link>
+                                </a>
                             </li>
                             <li>
-                                <Link href={"/Explore"}>
+                                <a href={"/Explore"}>
                                     <a>Explore more</a>
-                                </Link>
+                                </a>
                             </li>
                         </ul>
                     </div>
@@ -69,39 +69,39 @@ export const MenuArtwork = (props: Props) => {
                     <div>
                         <ul className={"flex flex-col gap-2 text-title font-semibold"}>
                             <li>
-                                <Link href={"/Everyday-Life"}>
+                                <a href={"/Everyday-Life"}>
                                     <a>Everyday Life</a>
-                                </Link>
+                                </a>
                             </li>
                             <li>
-                                <Link href={"/Landscape"}>
+                                <a href={"/Landscape"}>
                                     <a>Landscape</a>
-                                </Link>
+                                </a>
                             </li>
                             <li>
-                                <Link href={"/Nude"}>
+                                <a href={"/Nude"}>
                                     <a>Nude</a>
-                                </Link>
+                                </a>
                             </li>
                             <li>
-                                <Link href={"/Portrait"}>
+                                <a href={"/Portrait"}>
                                     <a>Portrait</a>
-                                </Link>
+                                </a>
                             </li>
                             <li>
-                                <Link href={"/Still-Life"}>
+                                <a href={"/Still-Life"}>
                                     <a>Still Life</a>
-                                </Link>
+                                </a>
                             </li>
                             <li>
-                                <Link href={"/Street-Art"}>
+                                <a href={"/Street-Art"}>
                                     <a>Street Art</a>
-                                </Link>
+                                </a>
                             </li>
                             <li>
-                                <Link href={"/see-more"}>
+                                <a href={"/see-more"}>
                                     <a>See more</a>
-                                </Link>
+                                </a>
                             </li>
                         </ul>
                     </div>
@@ -115,39 +115,39 @@ export const MenuArtwork = (props: Props) => {
                     <div>
                         <ul className={"flex flex-col gap-2 text-title font-semibold"}>
                             <li>
-                                <Link href={"/Abstract"}>
+                                <a href={"/Abstract"}>
                                     <a>Abstract</a>
-                                </Link>
+                                </a>
                             </li>
                             <li>
-                                <Link href={"/Fantasy"}>
+                                <a href={"/Fantasy"}>
                                     <a>Fantasy</a>
-                                </Link>
+                                </a>
                             </li>
                             <li>
-                                <Link href={"/Figurative"}>
+                                <a href={"/Figurative"}>
                                     <a>Figurative</a>
-                                </Link>
+                                </a>
                             </li>
                             <li>
-                                <Link href={"/Fine-Art"}>
+                                <a href={"/Fine-Art"}>
                                     <a>Fine Art</a>
-                                </Link>
+                                </a>
                             </li>
                             <li>
-                                <Link href={"/Pop-Art"}>
+                                <a href={"/Pop-Art"}>
                                     <a>Pop Art</a>
-                                </Link>
+                                </a>
                             </li>
                             <li>
-                                <Link href={"/Semi-abstract"}>
+                                <a href={"/Semi-abstract"}>
                                     <a>Semi - abstract</a>
-                                </Link>
+                                </a>
                             </li>
                             <li>
-                                <Link href={"/see-more"}>
+                                <a href={"/see-more"}>
                                     <a>See more</a>
-                                </Link>
+                                </a>
                             </li>
                         </ul>
                     </div>
@@ -176,39 +176,39 @@ export const MenuDesign = (props: Props) => {
                 <div>
                     <ul className={"flex flex-col gap-2 text-title font-semibold"}>
                         <li>
-                            <Link href={"/Sculpture"}>
+                            <a href={"/Sculpture"}>
                                 <a>Sculpture</a>
-                            </Link>
+                            </a>
                         </li>
                         <li>
-                            <Link href={"/Photography"}>
+                            <a href={"/Photography"}>
                                 <a>Photography</a>
-                            </Link>
+                            </a>
                         </li>
                         <li>
-                            <Link href={"/Drawing"}>
+                            <a href={"/Drawing"}>
                                 <a>Drawing</a>
-                            </Link>
+                            </a>
                         </li>
                         <li>
-                            <Link href={"/paper"}>
+                            <a href={"/paper"}>
                                 <a>Work on paper</a>
-                            </Link>
+                            </a>
                         </li>
                         <li>
-                            <Link href={"/media"}>
+                            <a href={"/media"}>
                                 <a>Other media</a>
-                            </Link>
+                            </a>
                         </li>
                         <li>
-                            <Link href={"/works"}>
+                            <a href={"/works"}>
                                 <a>Our latest works</a>
-                            </Link>
+                            </a>
                         </li>
                         <li>
-                            <Link href={"/Explore"}>
+                            <a href={"/Explore"}>
                                 <a>Explore more</a>
-                            </Link>
+                            </a>
                         </li>
                     </ul>
                 </div>
@@ -222,39 +222,39 @@ export const MenuDesign = (props: Props) => {
                 <div>
                     <ul className={"flex flex-col gap-2 text-title font-semibold"}>
                         <li>
-                            <Link href={"/Life"}>
+                            <a href={"/Life"}>
                                 <a>Everyday Life</a>
-                            </Link>
+                            </a>
                         </li>
                         <li>
-                            <Link href={"/Landscape"}>
+                            <a href={"/Landscape"}>
                                 <a>Landscape</a>
-                            </Link>
+                            </a>
                         </li>
                         <li>
-                            <Link href={"/Nude"}>
+                            <a href={"/Nude"}>
                                 <a>Nude</a>
-                            </Link>
+                            </a>
                         </li>
                         <li>
-                            <Link href={"/Portrait"}>
+                            <a href={"/Portrait"}>
                                 <a>Portrait</a>
-                            </Link>
+                            </a>
                         </li>
                         <li>
-                            <Link href={"/Still"}>
+                            <a href={"/Still"}>
                                 <a>Still Life</a>
-                            </Link>
+                            </a>
                         </li>
                         <li>
-                            <Link href={"/Street"}>
+                            <a href={"/Street"}>
                                 <a>Street Art</a>
-                            </Link>
+                            </a>
                         </li>
                         <li>
-                            <Link href={"/see-more"}>
+                            <a href={"/see-more"}>
                                 <a>See more</a>
-                            </Link>
+                            </a>
                         </li>
                     </ul>
                 </div>
@@ -268,39 +268,39 @@ export const MenuDesign = (props: Props) => {
                 <div>
                     <ul className={"flex flex-col gap-2 text-title font-semibold"}>
                         <li>
-                            <Link href={"/Abstract"}>
+                            <a href={"/Abstract"}>
                                 <a>Abstract</a>
-                            </Link>
+                            </a>
                         </li>
                         <li>
-                            <Link href={"/Fantasy"}>
+                            <a href={"/Fantasy"}>
                                 <a>Fantasy</a>
-                            </Link>
+                            </a>
                         </li>
                         <li>
-                            <Link href={"/Figurative"}>
+                            <a href={"/Figurative"}>
                                 <a>Figurative</a>
-                            </Link>
+                            </a>
                         </li>
                         <li>
-                            <Link href={"/Fine"}>
+                            <a href={"/Fine"}>
                                 <a>Fine Art</a>
-                            </Link>
+                            </a>
                         </li>
                         <li>
-                            <Link href={"/Pop"}>
+                            <a href={"/Pop"}>
                                 <a>Pop Art</a>
-                            </Link>
+                            </a>
                         </li>
                         <li>
-                            <Link href={"/Semi"}>
+                            <a href={"/Semi"}>
                                 <a>Semi - abstract</a>
-                            </Link>
+                            </a>
                         </li>
                         <li>
-                            <Link href={"/see-more"}>
+                            <a href={"/see-more"}>
                                 <a>See more</a>
-                            </Link>
+                            </a>
                         </li>
                     </ul>
                 </div>

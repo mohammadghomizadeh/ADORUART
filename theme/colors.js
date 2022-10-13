@@ -16,6 +16,10 @@ module.exports = {
     'menubg':'#CCC5C5',
     'editbg':'rgba(123, 117, 117, 0.12);',
     'filter':'#7B757580',
+    'headerLogin':'#D4A551CC',
+    'bodyLogin':'#E5E2E2',
     'search':'rgba(123, 117, 117, 0.09);',
+    'input':'rgba(123, 117, 117, 0.5);',
+
 };
 

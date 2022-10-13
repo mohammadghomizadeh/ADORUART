@@ -1,9 +1,15 @@
-import React from "react";
+import React, {useState} from "react";
 import HomeLayout from "@/components/layouts/Home";
-function Shipping()  {
-
+import {ADD_TO_FAVORITE, CARTS, DELETE_FROM_CART} from "@/hooks/useApi";
+import {useRouter} from "next/router";
+function Shipp___ingInfo()  {
+    const {query} = useRouter();
+    console.log(query)
+    // const [carts,setCarts] = useState<any>(data.carts)
+    // const [total,setTotal] = useState<any>(data.total)
+    // const [cookie,setCookie] = useState<any>(cook)
     return (
-        <HomeLayout title={"Home"}>
+        <HomeLayout title={"Shipping Cart | ADORUART"}  showMenu={false}>
             <section id="wizard" className={"bg-primary-dark py-20 px-24"}>
                 <header  className={"flex justify-between"}>
                     <div className={"w-full flex  items-center"}>
@@ -47,7 +53,7 @@ function Shipping()  {
                     </div>
                 </header>
             </section>
-        <section className={"w-full flex gap-6 px-16 my-20"}>
+            <section className={"w-full flex gap-6 px-16 my-20 " }>
             <section className={"w-3/5 border border-gray-300 rounded text-title"}>
                 <section className={"flex flex-col gap-12 px-14 py-10"}>
                     <div className={"flex flex-col"}>
@@ -168,13 +174,19 @@ function Shipping()  {
                     </button>
                 </div>
 
-                
+
 
             </section>
         </section>
-
         </HomeLayout>
     )
 }
-
-export default Shipping;
+// export async function getServerSideProps({ query }:any) {
+//     const res:any =  CARTS(query.c);
+//     const {data} = await res;
+//     return { props: {
+//             cook:query.c,
+//             data:data,
+//         } }
+// }
+export default Shipp___ingInfo;

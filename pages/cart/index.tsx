@@ -1,17 +1,16 @@
-import React from "react";
-import Image from "next/image";
+import React, {useEffect, useState} from "react";
 import HomeLayout from "@/components/layouts/Home";
-import HomeStyle from "@/styles/pages/Home.module.scss";
-import {ImEqualizer} from "react-icons/im"
-import {BsPinterest,BsFacebook} from "react-icons/bs"
-import {AiFillTwitterCircle} from "react-icons/ai"
-import {MdOutlineKeyboardArrowRight} from "react-icons/md"
-import Link from "next/link";
-import {GrReturn,GrSort} from "react-icons/gr";
-function Cart()  {
-
+import {CARTS} from "@/hooks/useApi"
+function Cart({data}:any)  {
+    const [carts,setCarts] = useState<any>(data.carts)
+//
+// useEffect(()=>{
+//     CARTS().then((res:any)=>{
+//
+//     })
+// })
     return (
-        <HomeLayout title={"Home"}>
+        <HomeLayout title={"Home"} showMenu={true} >
             <section id="wizard" className={"bg-primary-dark py-20 px-24"}>
                 <header  className={"flex justify-between"}>
                     <div className={"w-full flex  items-center"}>
@@ -285,5 +284,9 @@ function Cart()  {
         </HomeLayout>
     )
 }
-
+export async function getServerSideProps({ query }:any) {
+    const res:any =  CARTS(query.c);
+    const {data} = await res;
+    return { props: { data } }
+}
 export default Cart;
